@@ -1,3 +1,43 @@
+/* color */
+:root {
+  --blue100: #3274f6;
+  --blue20: #d6e3fd;
+  --black100: #000000;
+  --gray100: #f6f6f6;
+  --gray500: #686868;
+}
+
+/* gap */
+.mt100 {
+  margin-top: 100px;
+}
+.mt70 {
+  margin-top: 70px;
+}
+.mt50 {
+  margin-top: 50px;
+}
+.mt30 {
+  margin-top: 30px;
+}
+.mt10 {
+  margin-top: 10px;
+}
+
+.prevent-copy {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}
+
+/**/
+
 .App {
   text-align: center;
 }
