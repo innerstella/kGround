@@ -1,0 +1,32 @@
+[
+  {
+    "name": "화담숲",
+    "siteUrl": "https://m.hwadamsup.com/",
+    "imgUrl": "https://cdn.visitkorea.or.kr/kfes/upload/contents/db/8bceec16-bbe3-4d67-93cd-919058e6d7f4_5.jpg",
+    "keywordList": [2],
+    "scoreList": {
+      "test1": 10,
+      "test2": 8
+    }
+  },
+  {
+    "name": "서울숲",
+    "siteUrl": "https://seoulforest.or.kr/info/park-info",
+    "imgUrl": "https://a.cdn-hotels.com/gdcs/production40/d1820/71b746bb-9df2-4cd8-a43e-ec52af5f8a2f.jpg",
+    "keywordList": [2, 3],
+    "scoreList": {
+      "test1": 9,
+      "test2": 4
+    }
+  },
+  {
+    "name": "챔필",
+    "siteUrl": "https://seoulforest.or.kr/info/park-info",
+    "imgUrl": "https://a.cdn-hotels.com/gdcs/production40/d1820/71b746bb-9df2-4cd8-a43e-ec52af5f8a2f.jpg",
+    "keywordList": [4],
+    "scoreList": {
+      "test1": 9,
+      "test2": 4
+    }
+  }
+]
