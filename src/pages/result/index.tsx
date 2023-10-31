@@ -9,7 +9,7 @@ import Bubble from "../../components/Bubble";
 import Card from "../../components/Card";
 import RestartButton from "../../components/RestartButton";
 
-import keywordData from "../../data/keyword.json";
+import keywordData from "../../data/keyword-json.json";
 import dummyData from "../../data/dummy.json";
 
 const ResultPage = () => {
@@ -24,7 +24,6 @@ const ResultPage = () => {
   // keyword
   const location = useLocation();
   const keywordList = location.state;
-  console.log(keywordList);
 
   // bubble keyword
   let bubbleKeyword = "";
@@ -63,7 +62,7 @@ const ResultPage = () => {
             <>
               <Bubble text={bubbleKeyword} />
               {spotList.map((elem) => {
-                return <Card elem={elem} />;
+                return <Card key={elem.name} elem={elem} />;
               })}
             </>
           ) : (

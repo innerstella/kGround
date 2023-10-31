@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-import keywordModified from "../data/keywordModified.json";
+import keywordModified from "../data/keyword-id.json";
 
 type Elem = {
   name: string;

@@ -7,7 +7,7 @@ import Bubble from "../../components/Bubble";
 import ChipButton from "../../components/ChipButton";
 import RectangleButton from "../../components/RectangleButton";
 
-import keywordData from "../../data/keyword.json";
+import keywordData from "../../data/keyword-json.json";
 
 const KeywordPage = () => {
   const navigate = useNavigate();
