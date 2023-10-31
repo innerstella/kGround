@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import RectangleButton from "../components/RectangleButton";
 import { useNavigate } from "react-router-dom";
+
+import RectangleButton from "../components/RectangleButton";
 
 const MainPage = () => {
   const navigate = useNavigate();

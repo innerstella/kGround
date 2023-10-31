@@ -1,15 +1,16 @@
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { motion } from "framer-motion";
+
 import Header from "../../components/Header";
 import Loading from "../../components/Loading";
 import Bubble from "../../components/Bubble";
-import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import keywordData from "../../data/keyword.json";
 import Card from "../../components/Card";
-import dummyData from "../../data/dummy.json";
-import RectangleButton from "../../components/RectangleButton";
-import { motion } from "framer-motion";
 import RestartButton from "../../components/RestartButton";
+
+import keywordData from "../../data/keyword.json";
+import dummyData from "../../data/dummy.json";
 
 const ResultPage = () => {
   const navigate = useNavigate();

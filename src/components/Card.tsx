@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import keywordData from "../data/keyword.json";
-import { useState } from "react";
+
 import keywordModified from "../data/keywordModified.json";
 
 type Elem = {

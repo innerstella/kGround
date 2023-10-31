@@ -1,12 +1,13 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import { useToast } from "@chakra-ui/react";
+
 import Header from "../../components/Header";
 import Bubble from "../../components/Bubble";
 import ChipButton from "../../components/ChipButton";
-import keywordData from "../../data/keyword.json";
 import RectangleButton from "../../components/RectangleButton";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { useToast } from "@chakra-ui/react";
+
+import keywordData from "../../data/keyword.json";
 
 const KeywordPage = () => {
   const navigate = useNavigate();
