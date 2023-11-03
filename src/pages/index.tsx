@@ -13,7 +13,7 @@ const MainPage = () => {
         className="logo prevent-copy"
       />
       <p className="logo-text">어디로 여행 갈까요?</p>
-      <p className="info-text">목적 기반 여행정보 추천</p>
+      <p className="info-text">깨끗하고 안전한 여행지 추천 플랫폼</p>
       <RectangleButton
         text="시작하기"
         color="blue100"
