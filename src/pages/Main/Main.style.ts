@@ -5,6 +5,7 @@ export const MainWrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding-bottom: 15vh;
 `;
 
 export const Logo = styled.img`

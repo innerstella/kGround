@@ -18,7 +18,7 @@ export default Diner;
 
 const MainWrapper = styled.div`
   display: flex;
-  width: 20rem;
+  width: 100%;
   height: 4rem;
   padding: 0.625rem 5.625rem 0.625rem 1.25rem;
   flex-direction: column;
