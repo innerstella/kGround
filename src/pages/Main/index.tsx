@@ -1,0 +1,42 @@
+import GNB from "../../components/gnb/GNB";
+import * as S from "./Main.style";
+import Recommendation from "./components/Recommendation";
+import Restaurant from "./components/Restaurant";
+import Subway from "./components/Subway";
+import { useEffect } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { dbService } from "../../firebase";
+import { useRecoilState } from "recoil";
+import { mountainState } from "../../recoil/mountain";
+
+const MainPage = () => {
+  const [mountainData, setMountainData] = useRecoilState(mountainState);
+
+  useEffect(() => {
+    const docRef = collection(dbService, "mountainData");
+    getDocs(docRef)
+      .then((querySnapshot) => {
+        let data: any[] = [];
+        querySnapshot.forEach((doc) => {
+          data.push(doc.data());
+        });
+
+        setMountainData(data);
+      })
+      .catch((error) => {
+        console.error("Error getting documents: ", error);
+      });
+  }, [setMountainData]);
+
+  return (
+    <S.MainWrapper>
+      <S.Logo src="/assets/image/img-logo.png" alt="logo" />
+      <Recommendation />
+      <Subway />
+      <Restaurant />
+      <GNB page="home" />
+    </S.MainWrapper>
+  );
+};
+
+export default MainPage;
