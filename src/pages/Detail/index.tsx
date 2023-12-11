@@ -32,7 +32,7 @@ const DetailPage = () => {
               <p className="sub2">{mountainData.elevation}m</p>
             </S.Chip>
           </div>
-          <div className="box2">
+          <div className="box2-1">
             <p className="sub2">난이도</p>
             <S.Chip>
               <p className="sub2">{mountainData.level}</p>
