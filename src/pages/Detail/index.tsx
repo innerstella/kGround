@@ -13,8 +13,6 @@ const DetailPage = () => {
   const location = useLocation();
   const mountainData = location.state.data;
 
-  console.log(mountainData.diner);
-
   return (
     <S.MainWrapper>
       <AppBar />

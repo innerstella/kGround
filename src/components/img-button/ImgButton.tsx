@@ -44,6 +44,7 @@ const MainWapper = styled.div`
   background: var(--white, #fff);
 
   .text {
+    padding-top: 0.1rem;
     color: #000;
     text-align: center;
 

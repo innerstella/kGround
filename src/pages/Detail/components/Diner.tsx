@@ -6,11 +6,11 @@ const Diner = ({ data }: any) => {
     <MainWrapper>
       <div className="title-box">
         <span className="name">
-          {data.name} : {data.menu}
+          {data.dinerName} : {data.dinerMenu}
         </span>
-        <span className="time">도보 {data.time}분</span>
+        <span className="time">도보 {data.dinerTime}분</span>
       </div>
-      <p className="address">{data.address}</p>
+      <p className="address">{data.dinerAddress}</p>
     </MainWrapper>
   );
 };

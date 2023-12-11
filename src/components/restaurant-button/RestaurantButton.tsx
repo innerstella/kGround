@@ -32,8 +32,6 @@ const RestaurantButton = ({ mountainName }: Props) => {
   }, [mountainData, mountainName]);
 
   if (data) {
-    console.log(data.diner);
-
     return (
       <MainWrapper onClick={moveToDetail}>
         <div className="title">
@@ -43,7 +41,7 @@ const RestaurantButton = ({ mountainName }: Props) => {
         <div>
           {data.diner.slice(0, 3).map((restaurant, index) => (
             <p className="text" key={index}>
-              {restaurant?.name}
+              {restaurant?.dinerName}
             </p>
           ))}
         </div>
