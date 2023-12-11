@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const Diner = ({ data }: any) => {
-  console.log(data);
   return (
     <MainWrapper>
       <div className="title-box">
