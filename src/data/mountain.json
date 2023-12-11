@@ -1,0 +1,14 @@
+{
+  "관악산": {
+    "imgUrl": "/assets/image/관악산.png",
+    "subwayInfo": "서울대입구역에서 100m",
+    "subwayMin": 10,
+    "restaurant": ["흥부가", "쌈도둑", "폭포수", "", "", "", "", "", "", ""]
+  },
+  "인왕산": {
+    "imgUrl": "/assets/image/인왕산.png",
+    "subwayInfo": "서대문역에서 120m",
+    "subwayMin": 12,
+    "restaurant": ["식당1", "식당2", "식당3", "", "", "", "", "", "", ""]
+  }
+}
