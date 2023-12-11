@@ -31,6 +31,8 @@ export const Login = styled.div`
     font-weight: 400;
     line-height: normal;
     padding: 0;
+
+    padding-top: 0.1rem;
   }
 `;
 
