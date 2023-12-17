@@ -23,7 +23,7 @@ function App() {
 export default App;
 
 const Container = styled.div`
-  background-color: gray;
+  background-color: white;
   width: 100vw;
 
   display: flex;
@@ -33,10 +33,9 @@ const Container = styled.div`
 const MobileContainer = styled.div`
   width: 420px;
   min-height: 100vh;
-
   background-color: white;
   position: relative;
-  overflow-x: hidden;
+  overflow: hidden;
   @media screen and (max-width: 420px) {
     width: 100vw;
   }
