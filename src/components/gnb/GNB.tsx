@@ -1,28 +1,77 @@
+import { useNavigate } from "react-router-dom";
 import * as S from "./GNB.style";
 
 interface Props {
-  page: "home" | "search" | "wishlist";
+  page: "home" | "search" | "mypage";
 }
 
 const GNB = ({ page }: Props) => {
+  const navigate = useNavigate();
   return (
     <S.MainWrapper>
       <S.WhiteWrapper>
-        <S.Section $page={page === "home"}>
-          <img className="icon" src="/assets/svg/ic-home.svg" alt="home" />
-          <p className="text">Home</p>
+        <S.Section $page={page === "home"} onClick={() => navigate("/main")}>
+          {page === "home" ? (
+            <>
+              <img
+                className="icon"
+                src="/assets/svg/ic-home-on.svg"
+                alt="home"
+              />
+              <p className="text-on">Home</p>
+            </>
+          ) : (
+            <>
+              <img
+                className="icon off"
+                src="/assets/svg/ic-home-off.svg"
+                alt="home"
+              />
+              <p className="text-off">Home</p>
+            </>
+          )}
         </S.Section>
         <S.Section $page={page === "search"}>
-          <img className="icon" src="/assets/svg/ic-search.svg" alt="search" />
-          <p className="text">Search</p>
+          {page === "search" ? (
+            <>
+              <img
+                className="icon"
+                src="/assets/svg/ic-search-on.svg"
+                alt="search"
+              />
+              <p className="text-on">Search</p>
+            </>
+          ) : (
+            <>
+              <img
+                className="icon off"
+                src="/assets/svg/ic-search-off.svg"
+                alt="search"
+              />
+              <p className="text-off">Search</p>
+            </>
+          )}
         </S.Section>
-        <S.Section $page={page === "wishlist"}>
-          <img
-            className="icon"
-            src="/assets/svg/ic-wishlist.svg"
-            alt="wishlist"
-          />
-          <p className="text">Mypage</p>
+        <S.Section $page={page === "mypage"}>
+          {page === "mypage" ? (
+            <>
+              <img
+                className="icon"
+                src="/assets/svg/ic-mypage-on.svg"
+                alt="wishlist"
+              />
+              <p className="text-on">Mypage</p>
+            </>
+          ) : (
+            <>
+              <img
+                className="icon off"
+                src="/assets/svg/ic-mypage-off.svg"
+                alt="wishlist"
+              />
+              <p className="text-off">Mypage</p>
+            </>
+          )}
         </S.Section>
       </S.WhiteWrapper>
     </S.MainWrapper>

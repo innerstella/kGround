@@ -36,14 +36,27 @@ export const Section = styled.div<SectionProps>`
   justify-content: center;
   align-items: center;
   gap: 0.25rem;
+  .off {
+    margin-top: 4px;
+  }
 
   .icon {
     width: 1.5rem;
     height: 1.5rem;
   }
-  .text {
+  .text-off {
     color: var(--Default, #969696);
     text-align: center;
+
+    /* Sub2 */
+    font-family: Pretendard;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .text-on {
+    color: var(--Main-Color, var(--Main-Color, #043927));
 
     /* Sub2 */
     font-family: Pretendard;
