@@ -25,8 +25,11 @@ const AppBar = () => {
 export default AppBar;
 
 const MainWrapper = styled.div`
+  width: 420px;
+  @media screen and (max-width: 420px) {
+    width: 100vw;
+  }
   height: 4rem;
-  width: 100vw;
   background-color: white;
 
   padding: 0 1rem;

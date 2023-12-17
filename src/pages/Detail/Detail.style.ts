@@ -1,12 +1,65 @@
 import styled from "styled-components";
 
 export const MainWrapper = styled.div`
-  .img {
-    width: 100vw;
-    height: 16.8125rem;
-  }
   margin-top: 4rem;
   padding-bottom: 3rem;
+  .title {
+    position: relative;
+    z-index: 10;
+  }
+`;
+
+interface ImgWrapperProps {
+  imgUrl: string;
+}
+
+export const ImgWrapper = styled.div<ImgWrapperProps>`
+  width: 100%;
+  height: 16.8125rem;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    ${({ imgUrl }) => `url(${imgUrl})`};
+  background-size: cover;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.625rem;
+
+  padding-top: 3.38rem;
+
+  .title {
+    color: var(--white, #fff);
+
+    /* H1 */
+    font-family: Pretendard;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  .desc-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 0.25rem;
+  }
+  .desc {
+    color: #dbdbdb;
+    text-align: center;
+
+    /* Body3 */
+    font-family: Pretendard;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1rem; /* 133.333% */
+  }
+  .btns-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+
+    padding-top: 6rem;
+  }
 `;
 
 export const Wrapper = styled.div`
