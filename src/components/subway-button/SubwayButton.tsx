@@ -39,7 +39,9 @@ const SubwayButton = ({ type, mountainName }: Props) => {
         <FirstWapper onClick={moveToDetail}>
           <p className="sub1">{data.name}</p>
           <p className="sub2">
-            {data.subway}에서 {data.walkingDistance}m
+            {data.subway}에서
+            <br />
+            {data.walkingDistance}m
           </p>
           <div className="chipButton">
             <img
@@ -58,7 +60,9 @@ const SubwayButton = ({ type, mountainName }: Props) => {
         <SecondWrapper onClick={moveToDetail}>
           <p className="sub1">{data.name}</p>
           <p className="sub2">
-            {data.subway}에서 {data.walkingDistance}m
+            {data.subway}에서
+            <br />
+            {data.walkingDistance}m
           </p>
           <div className="chipButton">
             <img
