@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StartContainer = styled.div`
-  width: 100vw;
+  /* width: 100vw; */
   height: 100dvh;
   background-color: white;
   font-family: "SUIT", sans-serif;

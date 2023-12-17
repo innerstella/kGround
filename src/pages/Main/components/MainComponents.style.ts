@@ -7,10 +7,13 @@ export const MainWrapper = styled.div`
   align-items: flex-start;
   gap: 1.5rem;
 
-  width: 100vw;
+  width: 100%;
 `;
 
 export const Text = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   .sub1 {
     color: var(--Text-Color, #0e1513);
 
@@ -50,6 +53,8 @@ export const ButtonWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+
+  overflow-x: scroll;
 
   .gap {
     display: flex;

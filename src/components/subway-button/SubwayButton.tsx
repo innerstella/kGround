@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { mountainState } from "../../recoil/mountain";
 import { useEffect, useState } from "react";
 import { Skeleton } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   type: "first" | "second";
@@ -17,8 +18,12 @@ interface MountainData {
 }
 
 const SubwayButton = ({ type, mountainName }: Props) => {
+  const navigate = useNavigate();
   const mountainData = useRecoilValue(mountainState);
   const [data, setData] = useState<MountainData>();
+  const moveToDetail = () => {
+    navigate("/detail", { state: { data: data } });
+  };
 
   useEffect(() => {
     mountainData.forEach((item: any) => {
@@ -31,7 +36,7 @@ const SubwayButton = ({ type, mountainName }: Props) => {
   if (data) {
     if (type === "first") {
       return (
-        <FirstWapper>
+        <FirstWapper onClick={moveToDetail}>
           <p className="sub1">{data.name}</p>
           <p className="sub2">
             {data.subway}에서 {data.walkingDistance}m
@@ -50,7 +55,7 @@ const SubwayButton = ({ type, mountainName }: Props) => {
 
     if (type === "second") {
       return (
-        <SecondWrapper>
+        <SecondWrapper onClick={moveToDetail}>
           <p className="sub1">{data.name}</p>
           <p className="sub2">
             {data.subway}에서 {data.walkingDistance}m
@@ -68,11 +73,23 @@ const SubwayButton = ({ type, mountainName }: Props) => {
     }
   } else {
     return (
-      <FirstWapper>
-        <Skeleton>
-          <div className="skleton">sdfsdfs</div>
-        </Skeleton>
-      </FirstWapper>
+      <>
+        <FirstWapper>
+          <Skeleton>
+            <div className="skleton">sdfsdfs</div>
+          </Skeleton>
+        </FirstWapper>
+        <FirstWapper>
+          <Skeleton>
+            <div className="skleton">sdfsdfs</div>
+          </Skeleton>
+        </FirstWapper>
+        <FirstWapper>
+          <Skeleton>
+            <div className="skleton">sdfsdfs</div>
+          </Skeleton>
+        </FirstWapper>
+      </>
     );
   }
 

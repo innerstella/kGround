@@ -1,25 +1,88 @@
 import * as S from "./Recommendation.style";
 
-import mountainData from "../../../data/mountain.json";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { mountainState, recommendationState } from "../../../recoil/mountain";
+import { collection, getDocs } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { dbService } from "../../../firebase";
+import { useNavigate } from "react-router-dom";
+import { Skeleton } from "@chakra-ui/react";
 
-import ImgButton from "../../../components/img-button/ImgButton";
-import CircleButton from "../../../components/circle-button/CircleButton";
+interface Data {
+  imgUrl: string;
+  name: string;
+  desc: string;
+}
 
 const Recommendation = () => {
+  const navigate = useNavigate();
+  const mountainData = useRecoilValue(mountainState);
+  const [recommendationData, setRecommendationData] =
+    useRecoilState(recommendationState);
+  const [data, setData] = useState<Data>();
+
+  useEffect(() => {
+    const docRef = collection(dbService, "recommendationData");
+    getDocs(docRef)
+      .then((querySnapshot) => {
+        let data: any[] = [];
+        querySnapshot.forEach((doc) => {
+          data.push(doc.data());
+        });
+
+        setRecommendationData(data);
+      })
+      .catch((error) => {
+        console.error("Error getting documents: ", error);
+      });
+  }, [setRecommendationData]);
+
+  useEffect(() => {
+    mountainData.forEach((item) => {
+      if (item.name === recommendationData[0].ranking[0]) {
+        setData(item);
+      }
+    });
+  }, [recommendationData, mountainData]);
+
+  const moveToDetail = () => {
+    navigate("/detail", { state: { data: data } });
+  };
+
   return (
     <S.MainWrapper>
-      <S.Text>
-        <span className="sub1">이번 달&nbsp;</span>
-        <span className="sub2">추천</span>
-        <span className="sub3">설경이 아름답고 안전한 트레킹 코스</span>
-      </S.Text>
-      <S.ButtonWrapper>
-        <div className="gap">
-          <ImgButton mountainName={"관악산"} mountainData={mountainData} />
-          <ImgButton mountainName={"인왕산"} mountainData={mountainData} />
-        </div>
-        <CircleButton type="point" />
-      </S.ButtonWrapper>
+      <S.LeftWrapper>
+        <S.TagWrapper>
+          <p className="text">이번 달 추천</p>
+        </S.TagWrapper>
+        {data ? (
+          <>
+            <S.TextWrapper onClick={moveToDetail}>
+              <p className="title">{recommendationData[0].ranking[0]}</p>
+              <p className="desc"># {recommendationData[0].desc}</p>
+            </S.TextWrapper>
+          </>
+        ) : (
+          <>
+            <Skeleton>
+              <S.SkeletonWrapper>dfddfddfddfd</S.SkeletonWrapper>
+            </Skeleton>
+            <Skeleton>
+              <S.SkeletonWrapper>dfddfddfddfd</S.SkeletonWrapper>
+            </Skeleton>
+          </>
+        )}
+        <S.MoreWrapper>
+          <p className="text">추천 더 보기</p>
+        </S.MoreWrapper>
+      </S.LeftWrapper>
+      {data && (
+        <S.ImgWrapper
+          onClick={moveToDetail}
+          src={data?.imgUrl}
+          alt="mountain"
+        />
+      )}
     </S.MainWrapper>
   );
 };

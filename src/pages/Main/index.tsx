@@ -1,13 +1,13 @@
 import GNB from "../../components/gnb/GNB";
 import * as S from "./Main.style";
 import Recommendation from "./components/Recommendation";
-import Restaurant from "./components/Restaurant";
 import Subway from "./components/Subway";
 import { useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { dbService } from "../../firebase";
 import { useRecoilState } from "recoil";
 import { mountainState } from "../../recoil/mountain";
+import Banner from "../../components/banner/Banner";
 
 const MainPage = () => {
   const [mountainData, setMountainData] = useRecoilState(mountainState);
@@ -32,8 +32,8 @@ const MainPage = () => {
     <S.MainWrapper>
       <S.Logo src="/assets/image/img-logo.png" alt="logo" />
       <Recommendation />
+      <Banner />
       <Subway />
-      <Restaurant />
       <GNB page="home" />
     </S.MainWrapper>
   );
