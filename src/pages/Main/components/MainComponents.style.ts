@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const MainWrapper = styled.div`
   display: inline-flex;
-  padding: 1rem 1.25rem;
+  padding: 1.5rem 1.25rem;
   flex-direction: column;
   align-items: flex-start;
   gap: 1.5rem;

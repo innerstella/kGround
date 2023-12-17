@@ -32,8 +32,8 @@ const MainPage = () => {
     <S.MainWrapper>
       <S.Logo src="/assets/image/img-logo.png" alt="logo" />
       <Recommendation />
-      <Banner />
       <Subway />
+      <Banner />
       <GNB page="home" />
     </S.MainWrapper>
   );
