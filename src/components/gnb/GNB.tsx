@@ -31,7 +31,10 @@ const GNB = ({ page }: Props) => {
             </>
           )}
         </S.Section>
-        <S.Section $page={page === "search"}>
+        <S.Section
+          $page={page === "search"}
+          onClick={() => navigate("/keywords")}
+        >
           {page === "search" ? (
             <>
               <img
