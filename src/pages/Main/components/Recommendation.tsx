@@ -72,7 +72,7 @@ const Recommendation = () => {
             </Skeleton>
           </>
         )}
-        <S.MoreWrapper>
+        <S.MoreWrapper onClick={() => navigate("/list/recommendation")}>
           <p className="text">추천 더 보기</p>
         </S.MoreWrapper>
       </S.LeftWrapper>
