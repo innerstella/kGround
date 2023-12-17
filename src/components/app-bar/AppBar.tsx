@@ -41,6 +41,7 @@ const MainWrapper = styled.div`
 
   position: fixed;
   top: 0;
+  z-index: 100;
   .ic {
     width: 1.5rem;
     height: 1.5rem;
