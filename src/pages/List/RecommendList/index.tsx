@@ -4,9 +4,7 @@ import { mountainState, recommendationState } from "../../../recoil/mountain";
 import * as S from "./Recommend.style";
 import { useEffect, useState } from "react";
 import RectangleBox from "../components/RectangleBox";
-import GNB from "../../../components/gnb/GNB";
 import { monthState, weatherState } from "../../../recoil/system";
-import axios from "axios";
 import getTemperature from "../../../utils/getTemperature";
 
 interface Data {
@@ -61,7 +59,6 @@ const RecommendListPage = () => {
       {recommendData[0].ranking.map((item, idx) => {
         return <RectangleBox name={item} idx={idx} />;
       })}
-      <GNB page="search" />
     </S.MainWrapper>
   );
 };

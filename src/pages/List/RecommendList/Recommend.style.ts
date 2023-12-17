@@ -8,7 +8,7 @@ export const MainWrapper = styled.div`
   gap: 1.5rem;
 
   margin-top: 4rem;
-  margin-bottom: 10rem;
+  margin-bottom: 3rem;
   padding: 0 1.25rem 3rem 1.25rem;
   .gap3 {
     padding-top: 1.3rem;
