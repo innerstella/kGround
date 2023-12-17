@@ -12,7 +12,7 @@ type Props = {
   onClick: () => void;
 };
 
-const ChipButton = ({ elem, onClick }: Props) => {
+const KeywordButton = ({ elem, onClick }: Props) => {
   // animation random delay
   const min = 0.3,
     max = 0.6;
@@ -41,14 +41,14 @@ const ChipButton = ({ elem, onClick }: Props) => {
   );
 };
 
-export default ChipButton;
+export default KeywordButton;
 
 const Button = styled.div<{ isClicked: boolean }>`
   border-radius: 10px;
-  border: 3px solid var(--blue100, #3274f6);
+  border: 2px solid var(--Default, #969696);
   background: ${(props) => {
     if (props.isClicked) {
-      return "var(--blue20)";
+      return "var(--green20)";
     } else if (props.color === "gray100") {
       return "#fff";
     }
