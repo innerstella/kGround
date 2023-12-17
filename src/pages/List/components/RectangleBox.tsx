@@ -34,7 +34,7 @@ const RectangleBox = ({ name, idx }: RectangleBoxProps) => {
   return (
     <MainWrapper idx={idx} onClick={moveToDetail}>
       <div className="number">
-        <p className="text">{idx + 1}</p>
+        <p className="number-text">{idx + 1}</p>
       </div>
       <img className="img" src={data?.imgUrl} alt={name} />
       <p className="text">{name}</p>
@@ -46,7 +46,7 @@ export default RectangleBox;
 
 const MainWrapper = styled.div<{ idx: number }>`
   display: inline-flex;
-  padding: 0.625rem 10.125rem 0.625rem 1rem;
+  padding: 0.625rem 0rem 0.625rem 1rem;
   align-items: center;
   gap: 0.75rem;
 
@@ -91,7 +91,7 @@ const MainWrapper = styled.div<{ idx: number }>`
       }
     }};
 
-    .text {
+    .number-text {
       color: ${(props) => {
         if (props.idx === 0 || props.idx === 1 || props.idx === 2) {
           return "#fff";
@@ -104,11 +104,13 @@ const MainWrapper = styled.div<{ idx: number }>`
       font-weight: 500;
       line-height: normal;
       padding-top: 0.1rem;
+      white-space: nowrap;
     }
   }
   .img {
     width: 2.5rem;
     height: 2.5rem;
+    border-radius: 50%;
   }
   .text {
     color: #000;
