@@ -4,8 +4,10 @@ import SubwayButton from "../../../components/subway-button/SubwayButton";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { mountainState, subwayState } from "../../../recoil/mountain";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Subway = () => {
+  const navigate = useNavigate();
   const mountainData = useRecoilValue(mountainState);
   const [subwayData, setSubwayData] = useRecoilState(subwayState);
 
@@ -20,13 +22,18 @@ const Subway = () => {
     }
   }, [mountainData, setSubwayData]);
 
-  console.log(subwayData);
   return (
     <S.MainWrapper>
       <S.Text>
         <span className="sub1">지하철 역에서 가까운&nbsp;</span>
         <span className="sub2">산&nbsp;</span>
-        <img src="/assets/svg/ic-arrow-right.svg" alt="more" />
+        <img
+          onClick={() => {
+            navigate("/list/subway");
+          }}
+          src="/assets/svg/ic-arrow-right.svg"
+          alt="more"
+        />
       </S.Text>
       <S.ButtonWrapper>
         <div className="gap">
