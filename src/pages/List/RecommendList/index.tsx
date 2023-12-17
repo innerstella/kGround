@@ -1,4 +1,4 @@
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import AppBar from "../../../components/app-bar/AppBar";
 import { mountainState, recommendationState } from "../../../recoil/mountain";
 import * as S from "./Recommend.style";
@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import RectangleBox from "../components/RectangleBox";
 import GNB from "../../../components/gnb/GNB";
 import { monthState, weatherState } from "../../../recoil/system";
+import axios from "axios";
+import getTemperature from "../../../utils/getTemperature";
 
 interface Data {
   imgUrl: string;
@@ -15,7 +17,7 @@ interface Data {
 
 const RecommendListPage = () => {
   const monthData = useRecoilValue(monthState);
-  const weatherData = useRecoilValue(weatherState);
+  const [weatherData, setWeatherData] = useRecoilState(weatherState);
   const recommendData = useRecoilValue(recommendationState);
   const mountainData = useRecoilValue(mountainState);
   const [data, setData] = useState<Data>();
@@ -27,6 +29,19 @@ const RecommendListPage = () => {
       }
     });
   }, [recommendData, mountainData]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const temperature = await getTemperature();
+        setWeatherData(temperature);
+      } catch (error) {
+        console.error("Failed to fetch temperature:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <S.MainWrapper>
