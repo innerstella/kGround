@@ -23,9 +23,12 @@ const LoginButton = () => {
 
   const signIn = async () => {
     signInGoogle().then((res: any) => {
-      setUserLogin({ isLogin: true, uid: res.user?.uid });
+      let loginName;
+      if (res.user) {
+        setUserLogin({ isLogin: true, uid: res.user?.uid });
 
-      const loginName = res.user?.displayName;
+        loginName = res.user?.displayName;
+      }
 
       // userData 있는지 확인
       const docRef = collection(dbService, "userData");
