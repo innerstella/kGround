@@ -7,7 +7,10 @@ const Diner = ({ data }: any) => {
         <span className="name">
           {data.dinerName} : {data.dinerMenu}
         </span>
-        <span className="time">도보 {data.dinerTime}분</span>
+        <div className="flex-row">
+          <img className="ic" src="/assets/svg/ic-walk-green.svg" alt="walk" />
+          <span className="time">{data.dinerTime}분</span>
+        </div>
       </div>
       <p className="address">{data.dinerAddress}</p>
     </MainWrapper>
@@ -17,6 +20,14 @@ const Diner = ({ data }: any) => {
 export default Diner;
 
 const MainWrapper = styled.div`
+  .ic {
+    width: 0.75rem;
+  }
+  .flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
   display: flex;
   width: 100%;
   height: 4rem;
@@ -58,6 +69,7 @@ const MainWrapper = styled.div`
     line-height: 1.125rem; /* 128.571% */
 
     white-space: nowrap;
+    padding-top: 0.1rem;
   }
   .address {
     color: var(--Text-Sub, #545454);
@@ -68,5 +80,7 @@ const MainWrapper = styled.div`
     font-style: normal;
     font-weight: 400;
     line-height: 1rem; /* 133.333% */
+
+    white-space: nowrap;
   }
 `;
