@@ -4,6 +4,7 @@ import "firebase/firestore";
 
 import { GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import { useRecoilState } from "recoil";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -25,16 +26,19 @@ export const authService = auth.getAuth(fbase);
 // google auth
 export const signInGoogle = () => {
   const provider = new GoogleAuthProvider();
-  auth.setPersistence(authService, auth.browserSessionPersistence).then(() => {
-    return auth
-      .signInWithPopup(authService, provider)
-      .then((res) => {
-        window.location.reload();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  });
+
+  return auth
+    .setPersistence(authService, auth.browserSessionPersistence)
+    .then(() => {
+      return auth
+        .signInWithPopup(authService, provider)
+        .then((res) => {
+          return res;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    });
 };
 
 // db

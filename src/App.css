@@ -13,6 +13,32 @@
   --green20: rgba(53, 183, 17, 0.1);
 }
 
+/* font */
+.h1 {
+  color: var(--Main-Color, #043927);
+
+  /* H1 */
+  font-family: Pretendard;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  white-space: nowrap;
+}
+.body1 {
+  color: var(--Text-Sub, #545454);
+
+  /* Body1 */
+  font-family: Pretendard;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25rem; /* 125% */
+
+  white-space: nowrap;
+}
+
 /* gap */
 .mt100 {
   margin-top: 100px;
