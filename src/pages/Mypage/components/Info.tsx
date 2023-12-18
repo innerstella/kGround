@@ -21,8 +21,6 @@ const MainWrapper = styled.div`
   align-items: flex-start;
   gap: 1rem;
 
-  width: 100%;
-
   .title {
     color: var(--Text-Color, #0e1513);
 
