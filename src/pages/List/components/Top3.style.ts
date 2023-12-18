@@ -20,7 +20,8 @@ export const MainWrapper = styled.div`
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    padding: 0rem;
+
+    padding: 0 !important;
   }
   .desc {
     color: var(--Text-Sub, #545454);
@@ -52,7 +53,7 @@ export const FirstWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.75rem;
+  gap: 12px;
 
   border-radius: 0.375rem;
   border: 1px solid var(--Point-Color, #35b711);
@@ -71,7 +72,7 @@ export const SecondWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.75rem;
+  gap: 12px;
 
   border-radius: 0.375rem;
   border: 1px solid var(--Point-Color, #35b711);
@@ -91,7 +92,7 @@ export const ThirdWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.75rem;
+  gap: 12px;
 
   border-radius: 0.375rem;
   border: 1px solid var(--Point-Color, #35b711);

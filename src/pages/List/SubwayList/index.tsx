@@ -6,6 +6,7 @@ import { subwayState } from "../../../recoil/mountain";
 import RectangleBox from "../components/RectangleBox";
 import WideButton from "../../../components/wide-button/WideButton";
 import { useState } from "react";
+import SubwayListButton from "../components/SubwayListButton";
 
 const SubwayListPage = () => {
   const subwayData = useRecoilValue(subwayState);
@@ -26,7 +27,7 @@ const SubwayListPage = () => {
       <Top3 data={topData} />
       <S.ListWrapper>
         {middleData.map((item, index) => {
-          return <RectangleBox idx={index + 3} name={item.name} />;
+          return <SubwayListButton idx={index + 3} name={item.name} />;
         })}
         {!openBottomData && (
           <WideButton
@@ -37,7 +38,7 @@ const SubwayListPage = () => {
         {openBottomData && (
           <>
             {bottomData.map((item, index) => {
-              return <RectangleBox idx={index + 5} name={item.name} />;
+              return <SubwayListButton idx={index + 5} name={item.name} />;
             })}
           </>
         )}
