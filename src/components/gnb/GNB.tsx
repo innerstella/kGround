@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import * as S from "./GNB.style";
+import { useRecoilValue } from "recoil";
+import { userLoginState } from "../../recoil/user";
 
 interface Props {
   page: "home" | "search" | "mypage";
@@ -7,6 +9,15 @@ interface Props {
 
 const GNB = ({ page }: Props) => {
   const navigate = useNavigate();
+  const userLogin = useRecoilValue(userLoginState);
+  const checkLogin = () => {
+    if (userLogin) {
+      navigate("/mypage");
+    } else {
+      navigate("/signup");
+    }
+  };
+
   return (
     <S.MainWrapper>
       <S.WhiteWrapper>
@@ -55,7 +66,7 @@ const GNB = ({ page }: Props) => {
             </>
           )}
         </S.Section>
-        <S.Section $page={page === "mypage"}>
+        <S.Section $page={page === "mypage"} onClick={() => checkLogin()}>
           {page === "mypage" ? (
             <>
               <img
