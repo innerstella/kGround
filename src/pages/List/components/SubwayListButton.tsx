@@ -95,7 +95,7 @@ const MainWrapper = styled.div<{ idx: number }>`
     }
   }};
 
-  width: 100%;
+  width: 100% !important;
   height: 3.75rem;
 
   .number {
