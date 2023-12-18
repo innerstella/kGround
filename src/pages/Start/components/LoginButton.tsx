@@ -6,6 +6,8 @@ import { UserData, userLoginState, userState } from "../../../recoil/user";
 import {
   DocumentData,
   collection,
+  doc,
+  getDoc,
   getDocs,
   query,
   where,
@@ -23,43 +25,41 @@ const LoginButton = () => {
 
   const signIn = async () => {
     signInGoogle().then((res: any) => {
-      let loginName;
       if (res.user) {
         setUserLogin({ isLogin: true, uid: res.user?.uid });
-
-        loginName = res.user?.displayName;
       }
 
       // userData 있는지 확인
-      const docRef = collection(dbService, "userData");
-      const q = query(docRef, where("userName", "==", loginName));
+      const docRef2 = doc(dbService, "userData", res.user?.uid);
+      getDoc(docRef2)
+        .then((docSnapshot) => {
+          if (docSnapshot.exists()) {
+            const data = docSnapshot.data();
+            setUserData(data as UserData);
 
-      getDocs(q)
-        .then((querySnapshot) => {
-          let data: DocumentData[] = [];
-          querySnapshot.forEach((doc) => {
-            data.push(doc.data());
-          });
+            if (data) {
+              const loadData: UserData = {
+                userName: data.userName,
+                userGender: data.userGender,
+                userBirth: data.userBirth,
+                userWishList: data.userWishList,
+                userReviewList: data.userReviewList,
+              };
+              setUserData(loadData);
 
-          if (data[0]) {
-            const loadData: UserData = {
-              userName: data[0].userName,
-              userGender: data[0].userGender,
-              userBirth: data[0].userBirth,
-              userWishList: data[0].userWishList,
-              userReviewList: data[0].userReviewList,
-            };
-            setUserData(loadData);
-
-            // 로그인
-            navigate("/main");
+              // 로그인
+              navigate("/main");
+            } else {
+              // 회원가입
+              navigate("/signup", { state: { uid: res.user?.uid } });
+            }
           } else {
-            // 회원가입
-            navigate("/signup", { state: { uid: res.user?.uid } });
+            console.log("No such document!");
           }
         })
         .catch((error) => {
-          console.error("Error getting documents: ", error);
+          console.error("Error getting document:", error);
+          throw error; // Throw the error to be caught by the calling code
         });
     });
   };
