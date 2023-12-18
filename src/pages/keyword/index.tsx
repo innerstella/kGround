@@ -63,7 +63,11 @@ const KeywordPage = () => {
           );
         })}
       </S.KeywordWrapper>
-      <WideButton text="여행지 추천 받기" onClick={() => clickNext()} />
+      <WideButton
+        text="여행지 추천 받기"
+        onClick={() => clickNext()}
+        type="fill"
+      />
       <GNB page="search" />
     </S.MainWrapper>
   );

@@ -31,6 +31,7 @@ const SubwayListPage = () => {
         })}
         {!openBottomData && (
           <WideButton
+            type="fill"
             text="나머지 산 확인하기"
             onClick={() => setOpenBottomData(!openBottomData)}
           />
