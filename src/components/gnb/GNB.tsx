@@ -11,10 +11,10 @@ const GNB = ({ page }: Props) => {
   const navigate = useNavigate();
   const userLogin = useRecoilValue(userLoginState);
   const checkLogin = () => {
-    if (userLogin) {
+    if (userLogin.isLogin) {
       navigate("/mypage");
     } else {
-      navigate("/signup");
+      navigate("/");
     }
   };
 

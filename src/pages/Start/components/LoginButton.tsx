@@ -16,12 +16,14 @@ import {
 const LoginButton = () => {
   const navigate = useNavigate();
 
-  const moveToMain = () => {
-    navigate("/main");
-  };
-
   const [userLogin, setUserLogin] = useRecoilState(userLoginState);
   const [userData, setUserData] = useRecoilState(userState);
+
+  const moveToMain = () => {
+    setUserLogin({ isLogin: false, uid: "" });
+
+    navigate("/main");
+  };
 
   const signIn = async () => {
     signInGoogle().then((res: any) => {

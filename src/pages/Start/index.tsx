@@ -1,8 +1,18 @@
+import { useResetRecoilState } from "recoil";
 import * as S from "./Start.style";
 
 import LoginButton from "./components/LoginButton";
+import { userLoginState, userState } from "../../recoil/user";
+import { useEffect } from "react";
 
 const StartPage = () => {
+  const userData = useResetRecoilState(userState);
+  const loginData = useResetRecoilState(userLoginState);
+
+  useEffect(() => {
+    userData();
+    loginData();
+  }, []);
   return (
     <S.StartContainer>
       <S.Subtitle>등산, 트래킹 할 곳을 찾을 때</S.Subtitle>

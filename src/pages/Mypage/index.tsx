@@ -16,6 +16,7 @@ const MyPage = () => {
   const userLoginData = useRecoilValue(userLoginState);
 
   useEffect(() => {
+    if (!userLoginData.isLogin) return;
     const uid = userLoginData.uid;
 
     const docRef = doc(dbService, "userData", uid);

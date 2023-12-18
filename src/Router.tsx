@@ -8,13 +8,15 @@ import SubwayListPage from "./pages/List/SubwayList";
 import KeywordPage from "./pages/Keyword";
 import MyPage from "./pages/Mypage";
 
-import { userLoginState } from "./recoil/user";
+import { userLoginState, userState } from "./recoil/user";
 import { useRecoilState } from "recoil";
 import SignUpPage from "./pages/SignUp";
 
 const AppRouter = () => {
   const [userLogin, setUserLogin] = useRecoilState(userLoginState);
-  // console.log("userLogin", userLogin);
+  const userData = useRecoilState(userState);
+  console.log("userData", userData);
+  console.log("userLogin", userLogin);
 
   return (
     <BrowserRouter>
