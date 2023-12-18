@@ -51,12 +51,11 @@ const LoginButton = () => {
 
               // 로그인
               navigate("/main");
-            } else {
-              // 회원가입
-              navigate("/signup", { state: { uid: res.user?.uid } });
             }
           } else {
             console.log("No such document!");
+            // 회원가입
+            navigate("/signup", { state: { uid: res.user?.uid } });
           }
         })
         .catch((error) => {
