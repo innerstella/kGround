@@ -22,9 +22,6 @@ const getTemperature = async () => {
       `http://apis.data.go.kr/1360000/AsosHourlyInfoService/getWthrDataList?serviceKey=${key}&numOfRows=23&pageNo=1&dataCd=ASOS&dateCd=HR&stnIds=108&endDt=${endDt}&endHh=${endHh}&startHh=${startHh}&startDt=${startDt}&dataType=Json`
     )
     .then((res: any) => {
-      //   console.log(res.data.response.body.items.item[0]);
-      //   console.log(res.data.response.body.items.item[0].ta);
-
       return res.data.response.body.items.item[0].ta;
     })
     .catch((err: any) => {

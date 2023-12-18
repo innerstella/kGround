@@ -34,8 +34,6 @@ const SubwayListButton = ({ name, idx }: RectangleBoxProps) => {
     });
   }, [name, mountainData]);
 
-  console.log(data);
-
   return (
     <MainWrapper idx={idx} onClick={moveToDetail}>
       <div className="number">

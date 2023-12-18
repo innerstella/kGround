@@ -14,7 +14,7 @@ import SignUpPage from "./pages/SignUp";
 
 const AppRouter = () => {
   const [userLogin, setUserLogin] = useRecoilState(userLoginState);
-  console.log("userLogin", userLogin);
+  // console.log("userLogin", userLogin);
 
   return (
     <BrowserRouter>
