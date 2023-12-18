@@ -8,7 +8,14 @@ import SubwayListPage from "./pages/List/SubwayList";
 import KeywordPage from "./pages/Keyword";
 import MyPage from "./pages/Mypage";
 
+import { userLoginState } from "./recoil/user";
+import { useRecoilState } from "recoil";
+import SignUpPage from "./pages/SignUp";
+
 const AppRouter = () => {
+  const [userLogin, setUserLogin] = useRecoilState(userLoginState);
+  console.log("userLogin", userLogin);
+
   return (
     <BrowserRouter>
       <Routes>
@@ -19,6 +26,7 @@ const AppRouter = () => {
         <Route path="/list/recommendation" element={<RecommendListPage />} />
         <Route path="/list/subway" element={<SubwayListPage />} />
         <Route path="/keywords" element={<KeywordPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
 
         {/* 로그인 필요 */}
         <Route path="/mypage" element={<MyPage />} />
