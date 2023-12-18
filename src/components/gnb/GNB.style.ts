@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const MainWrapper = styled.div`
   position: fixed;
   bottom: 0.75rem;
+
+  z-index: 10;
 `;
 
 export const WhiteWrapper = styled.div`
