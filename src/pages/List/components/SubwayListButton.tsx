@@ -148,6 +148,8 @@ const MainWrapper = styled.div<{ idx: number }>`
     font-weight: 500;
     line-height: normal;
     width: 3rem;
+
+    white-space: nowrap;
   }
   .subway-text {
     color: var(--Text-Sub, #545454);
