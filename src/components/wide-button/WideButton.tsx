@@ -35,5 +35,7 @@ const MainWrapper = styled.div`
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+
+    white-space: nowrap;
   }
 `;
