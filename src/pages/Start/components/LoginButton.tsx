@@ -1,17 +1,10 @@
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { doc, getDoc } from "firebase/firestore";
+
 import * as S from "./LoginButton.style";
 import { dbService, signInGoogle } from "../../../firebase";
-import { useRecoilState } from "recoil";
 import { UserData, userLoginState, userState } from "../../../recoil/user";
-import {
-  DocumentData,
-  collection,
-  doc,
-  getDoc,
-  getDocs,
-  query,
-  where,
-} from "firebase/firestore";
 
 const LoginButton = () => {
   const navigate = useNavigate();
@@ -32,8 +25,8 @@ const LoginButton = () => {
       }
 
       // userData 있는지 확인
-      const docRef2 = doc(dbService, "userData", res.user?.uid);
-      getDoc(docRef2)
+      const docRef = doc(dbService, "userData", res.user?.uid);
+      getDoc(docRef)
         .then((docSnapshot) => {
           if (docSnapshot.exists()) {
             const data = docSnapshot.data();
@@ -53,7 +46,6 @@ const LoginButton = () => {
               navigate("/main");
             }
           } else {
-            console.log("No such document!");
             // 회원가입
             navigate("/signup", { state: { uid: res.user?.uid } });
           }

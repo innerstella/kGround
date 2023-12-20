@@ -1,4 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useRecoilState } from "recoil";
+
+import { userLoginState, userState } from "./recoil/user";
+
 import StartPage from "./pages/Start";
 import MainPage from "./pages/Main";
 import DetailPage from "./pages/Detail";
@@ -7,12 +11,10 @@ import RecommendListPage from "./pages/List/RecommendList";
 import SubwayListPage from "./pages/List/SubwayList";
 import KeywordPage from "./pages/Keyword";
 import MyPage from "./pages/Mypage";
-
-import { userLoginState, userState } from "./recoil/user";
-import { useRecoilState } from "recoil";
 import SignUpPage from "./pages/SignUp";
 
 const AppRouter = () => {
+  // recoil 상태값 확인
   const [userLogin, setUserLogin] = useRecoilState(userLoginState);
   const userData = useRecoilState(userState);
   console.log("userData", userData);
