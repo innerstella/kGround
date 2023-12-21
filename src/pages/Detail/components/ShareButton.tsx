@@ -12,11 +12,7 @@ import {
 import { useLocation } from "react-router-dom";
 import shareUrl from "../../../utils/shareUrl";
 
-interface Props {
-  type: "share" | "wishlist";
-}
-
-const SmallCircleButton = ({ type }: Props) => {
+const ShareButton = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const location = useLocation();
   const toast = useToast();
@@ -35,12 +31,7 @@ const SmallCircleButton = ({ type }: Props) => {
   };
   return (
     <MainWrapper>
-      {type === "share" && (
-        <img onClick={onOpen} src="/assets/svg/ic-share.svg" alt="share" />
-      )}
-      {type === "wishlist" && (
-        <img src="/assets/svg/ic-wish.svg" alt="wishlist" />
-      )}
+      <img onClick={onOpen} src="/assets/svg/ic-share.svg" alt="share" />
 
       <Modal isOpen={isOpen} onClose={onClose} size="xs" isCentered>
         <ModalOverlay />
@@ -76,7 +67,7 @@ const SmallCircleButton = ({ type }: Props) => {
   );
 };
 
-export default SmallCircleButton;
+export default ShareButton;
 
 const MainWrapper = styled.div`
   border-radius: 50%;

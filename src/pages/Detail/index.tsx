@@ -2,7 +2,8 @@ import { useLocation } from "react-router-dom";
 import * as S from "./Detail.style";
 import AppBar from "../../components/app-bar/AppBar";
 import Diner from "./components/Diner";
-import SmallCircleButton from "./components/SmallCircleButton";
+import ShareButton from "./components/ShareButton";
+import WishButton from "./components/WishButton";
 
 const DetailPage = () => {
   const location = useLocation();
@@ -29,8 +30,8 @@ const DetailPage = () => {
           <p className="desc">{mountainData.startAddress}</p>
         </div>
         <div className="btns-wrapper">
-          <SmallCircleButton type="share" />
-          <SmallCircleButton type="wishlist" />
+          <ShareButton />
+          <WishButton />
         </div>
       </S.ImgWrapper>
 
