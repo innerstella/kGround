@@ -2,7 +2,6 @@ import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { MountainData, mountainState } from "../../../recoil/mountain";
 import { useEffect, useState } from "react";
-import WideButton from "../../../components/wide-button/WideButton";
 import SmallWideButton from "../../../components/wide-button/SmallWideButton";
 import { Skeleton } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";

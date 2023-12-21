@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { UserData, userLoginState, userState } from "../../../recoil/user";
 import { doc, setDoc } from "firebase/firestore";
 import { dbService } from "../../../firebase";
+import { useToast } from "@chakra-ui/react";
 
 interface Props {
   mountainName: string;
@@ -13,6 +14,7 @@ const WishButton = ({ mountainName }: Props) => {
   const loginState = useRecoilValue(userLoginState);
   const [userData, setUserData] = useRecoilState(userState);
   const [isWish, setIsWish] = useState(false);
+  const toast = useToast();
   const userWishList = userData.userWishList;
 
   useEffect(() => {
@@ -34,11 +36,23 @@ const WishButton = ({ mountainName }: Props) => {
       );
       updateField(data);
       setIsWish(false);
+      toast({
+        title: "찜 리스트에서 제거되었습니다!",
+        status: "success",
+        duration: 2000,
+        isClosable: true,
+      });
     } else {
       // db에 없으면 => db에 추가 & 빨간 하트 변경
       data.userWishList = [...data.userWishList, mountainName];
       updateField(data);
       setIsWish(true);
+      toast({
+        title: "찜 리스트에 추가되었습니다!",
+        status: "success",
+        duration: 2000,
+        isClosable: true,
+      });
     }
   };
 
