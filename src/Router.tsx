@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 
 import { userLoginState, userState } from "./recoil/user";
 
@@ -12,11 +12,12 @@ import SubwayListPage from "./pages/List/SubwayList";
 import KeywordPage from "./pages/Keyword";
 import MyPage from "./pages/Mypage";
 import SignUpPage from "./pages/SignUp";
+import WishListPage from "./pages/Mypage/WishListPage";
 
 const AppRouter = () => {
   // recoil 상태값 확인
-  const [userLogin, setUserLogin] = useRecoilState(userLoginState);
-  const userData = useRecoilState(userState);
+  const userLogin = useRecoilValue(userLoginState);
+  const userData = useRecoilValue(userState);
   console.log("userData", userData);
   console.log("userLogin", userLogin);
 
@@ -26,7 +27,7 @@ const AppRouter = () => {
         {/* 비로그인 접근 가능 */}
         <Route path="/" element={<StartPage />} />
         <Route path="/main" element={<MainPage />} />
-        <Route path="/detail" element={<DetailPage />} />
+        <Route path="/detail/:id" element={<DetailPage />} />
         <Route path="/list/recommendation" element={<RecommendListPage />} />
         <Route path="/list/subway" element={<SubwayListPage />} />
         <Route path="/keywords" element={<KeywordPage />} />
@@ -34,6 +35,7 @@ const AppRouter = () => {
 
         {/* 로그인 필요 */}
         <Route path="/mypage" element={<MyPage />} />
+        <Route path="/wishlist" element={<WishListPage />} />
 
         {/* 관리자 페이지 */}
         <Route path="/create" element={<CreatePage />} />
