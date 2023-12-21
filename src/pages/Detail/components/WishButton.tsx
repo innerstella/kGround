@@ -1,13 +1,63 @@
+import { useEffect, useState } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
 import styled from "styled-components";
+import { UserData, userLoginState, userState } from "../../../recoil/user";
+import { doc, setDoc } from "firebase/firestore";
+import { dbService } from "../../../firebase";
 
-const WishButton = () => {
+interface Props {
+  mountainName: string;
+}
+
+const WishButton = ({ mountainName }: Props) => {
+  const loginState = useRecoilValue(userLoginState);
+  const [userData, setUserData] = useRecoilState(userState);
+  const [isWish, setIsWish] = useState(false);
+  const userWishList = userData.userWishList;
+
+  useEffect(() => {
+    if (userWishList.includes(mountainName)) {
+      // db에 있으면 => 빨간 하트로 렌더
+      setIsWish(true);
+    } else {
+      // db에 없으면 => 기본 하트로 렌더
+      setIsWish(false);
+    }
+  }, [mountainName, userData.userWishList, userWishList]);
+
   const clickWish = () => {
-    alert("찜하기 버튼 클릭");
+    const data = { ...userData };
+    if (userWishList.includes(mountainName)) {
+      // db에 있으면 => db에서 삭제 & 기본 하트 변경
+      data.userWishList = data.userWishList.filter(
+        (wish: string) => wish !== mountainName
+      );
+      updateField(data);
+      setIsWish(false);
+    } else {
+      // db에 없으면 => db에 추가 & 빨간 하트 변경
+      data.userWishList = [...data.userWishList, mountainName];
+      updateField(data);
+      setIsWish(true);
+    }
+  };
+
+  const updateField = async (data: UserData) => {
+    try {
+      setDoc(doc(dbService, "userData", loginState.uid), data);
+      setUserData(data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
     <MainWrapper onClick={clickWish}>
-      <img src="/assets/svg/ic-wish.svg" alt="wishlist" />
+      {isWish ? (
+        <img src="/assets/svg/ic-wish-on.svg" alt="wishlist" />
+      ) : (
+        <img src="/assets/svg/ic-wish.svg" alt="wishlist" />
+      )}
     </MainWrapper>
   );
 };

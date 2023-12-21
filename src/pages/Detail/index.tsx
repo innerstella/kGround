@@ -31,7 +31,7 @@ const DetailPage = () => {
         </div>
         <div className="btns-wrapper">
           <ShareButton />
-          <WishButton />
+          <WishButton mountainName={mountainData.name} />
         </div>
       </S.ImgWrapper>
 

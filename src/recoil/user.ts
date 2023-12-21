@@ -7,7 +7,7 @@ export interface UserData {
   userName: string;
   userGender: 1 | 2;
   userBirth: number;
-  userWishList: number[];
+  userWishList: string[];
   userReviewList: string[];
 }
 
