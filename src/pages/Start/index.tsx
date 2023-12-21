@@ -23,7 +23,7 @@ const StartPage = () => {
       </S.Title>
       <S.Image src="/assets/image/img-mountain.png" alt="logo" />
       <S.Text>쾌적한 등산, 트레킹 추천 서비스</S.Text>
-      <LoginButton />
+      <LoginButton type="both" />
     </S.StartContainer>
   );
 };

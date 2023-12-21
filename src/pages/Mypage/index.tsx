@@ -10,6 +10,7 @@ import { dbService } from "../../firebase";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { UserData, userLoginState, userState } from "../../recoil/user";
 import { useNavigate } from "react-router-dom";
+import NonLogin from "./components/NonLogin";
 
 const MyPage = () => {
   const navigate = useNavigate();
@@ -38,24 +39,32 @@ const MyPage = () => {
         console.error("Error getting document:", error);
         throw error; // Throw the error to be caught by the calling code
       });
-  }, []);
+  }, [setUserData, userLoginData.isLogin, userLoginData.uid]);
+
   return (
     <S.MainWrapper>
       <AppBar />
-      <S.NameWrapper>
-        <Cheering text={cheeringText} />
-        <p className="text-name">
-          {userData.userName}
-          <span className="text-sir">님</span>
-        </p>
-        <p className="text-hello">안녕하세요!</p>
-      </S.NameWrapper>
-      <WideButton
-        onClick={() => navigate("/wishlist")}
-        type="outline"
-        text="찜 리스트"
-      />
-      <Info />
+      {userLoginData.isLogin ? (
+        <>
+          <S.NameWrapper>
+            <Cheering text={cheeringText} />
+            <p className="text-name">
+              {userData.userName}
+              <span className="text-sir">님</span>
+            </p>
+            <p className="text-hello">안녕하세요!</p>
+          </S.NameWrapper>
+          <WideButton
+            onClick={() => navigate("/wishlist")}
+            type="outline"
+            text="찜 리스트"
+          />
+          <Info />
+        </>
+      ) : (
+        <NonLogin />
+      )}
+
       <GNB page="mypage" />
     </S.MainWrapper>
   );

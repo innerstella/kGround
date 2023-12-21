@@ -9,14 +9,6 @@ interface Props {
 
 const GNB = ({ page }: Props) => {
   const navigate = useNavigate();
-  const userLogin = useRecoilValue(userLoginState);
-  const checkLogin = () => {
-    if (userLogin.isLogin) {
-      navigate("/mypage");
-    } else {
-      navigate("/");
-    }
-  };
 
   return (
     <S.MainWrapper>
@@ -66,7 +58,10 @@ const GNB = ({ page }: Props) => {
             </>
           )}
         </S.Section>
-        <S.Section $page={page === "mypage"} onClick={() => checkLogin()}>
+        <S.Section
+          $page={page === "mypage"}
+          onClick={() => navigate("/mypage")}
+        >
           {page === "mypage" ? (
             <>
               <img

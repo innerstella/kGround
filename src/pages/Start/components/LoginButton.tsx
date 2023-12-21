@@ -6,7 +6,11 @@ import * as S from "./LoginButton.style";
 import { dbService, signInGoogle } from "../../../firebase";
 import { UserData, userLoginState, userState } from "../../../recoil/user";
 
-const LoginButton = () => {
+interface LoginButtonProps {
+  type: "google" | "both";
+}
+
+const LoginButton = ({ type }: LoginButtonProps) => {
   const navigate = useNavigate();
 
   const [userLogin, setUserLogin] = useRecoilState(userLoginState);
@@ -58,13 +62,23 @@ const LoginButton = () => {
   };
   return (
     <S.LoginWrapper>
-      <S.Login onClick={signIn}>
-        <img src="/assets/svg/ic-google.svg" alt="google" className="svg" />
-        <p className="text">구글 계정으로 시작하기</p>
-      </S.Login>
-      <S.NonLogin onClick={moveToMain}>
-        <p className="text">로그인 없이 시작하기</p>
-      </S.NonLogin>
+      {type === "google" && (
+        <S.Login onClick={signIn}>
+          <img src="/assets/svg/ic-google.svg" alt="google" className="svg" />
+          <p className="text">구글 계정으로 시작하기</p>
+        </S.Login>
+      )}
+      {type === "both" && (
+        <>
+          <S.Login onClick={signIn}>
+            <img src="/assets/svg/ic-google.svg" alt="google" className="svg" />
+            <p className="text">구글 계정으로 시작하기</p>
+          </S.Login>
+          <S.NonLogin onClick={moveToMain}>
+            <p className="text">로그인 없이 시작하기</p>
+          </S.NonLogin>
+        </>
+      )}
     </S.LoginWrapper>
   );
 };
