@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import ChipButton from "../../../components/subway-button/ChipButton";
 import * as S from "./Top3.style";
+import { MountainData } from "../../../recoil/mountain";
 
 interface Props {
   data: any;
@@ -12,8 +13,8 @@ const Top3 = ({ data }: Props) => {
   const data3 = data[2];
 
   const navigate = useNavigate();
-  const moveToDetail = (data: string) => {
-    navigate("/detail", { state: { data: data } });
+  const moveToDetail = (data: MountainData) => {
+    navigate(`/detail/${data.name}`);
   };
 
   return (

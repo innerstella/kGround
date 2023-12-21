@@ -8,7 +8,27 @@ interface RecommendationData {
   ranking: string[];
 }
 
-export const mountainState = atom<any[]>({
+interface Diner {
+  dinerAddress: string;
+  dinerMenu: string;
+  dinerName: string;
+  dinerTime: number;
+}
+
+export interface MountainData {
+  name: string;
+  elevation: number;
+  imgUrl: string;
+  level: string;
+  startAddress: string;
+  subway: string;
+  track: string;
+  walkingDistance: number;
+  walkingTime: number;
+  diner: Diner[];
+}
+
+export const mountainState = atom<MountainData[]>({
   key: "mountainState",
   default: [],
   effects_UNSTABLE: [persistAtom],

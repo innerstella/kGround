@@ -1,24 +1,22 @@
 import { useRecoilState, useRecoilValue } from "recoil";
 import AppBar from "../../../components/app-bar/AppBar";
-import { mountainState, recommendationState } from "../../../recoil/mountain";
+import {
+  MountainData,
+  mountainState,
+  recommendationState,
+} from "../../../recoil/mountain";
 import * as S from "./Recommend.style";
 import { useEffect, useState } from "react";
 import RectangleBox from "../components/RectangleBox";
 import { monthState, weatherState } from "../../../recoil/system";
 import getTemperature from "../../../utils/getTemperature";
 
-interface Data {
-  imgUrl: string;
-  name: string;
-  desc: string;
-}
-
 const RecommendListPage = () => {
   const monthData = useRecoilValue(monthState);
   const [weatherData, setWeatherData] = useRecoilState(weatherState);
   const recommendData = useRecoilValue(recommendationState);
   const mountainData = useRecoilValue(mountainState);
-  const [data, setData] = useState<Data>();
+  const [data, setData] = useState<MountainData>();
 
   useEffect(() => {
     mountainData.forEach((item) => {

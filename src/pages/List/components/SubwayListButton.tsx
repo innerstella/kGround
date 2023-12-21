@@ -1,5 +1,5 @@
 import { useRecoilValue } from "recoil";
-import { mountainState } from "../../../recoil/mountain";
+import { MountainData, mountainState } from "../../../recoil/mountain";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
@@ -9,21 +9,14 @@ interface RectangleBoxProps {
   idx: number;
 }
 
-interface Data {
-  imgUrl: string;
-  name: string;
-  desc: string;
-  subway: string;
-  walkingDistance: number;
-  walkingTime: number;
-}
-
 const SubwayListButton = ({ name, idx }: RectangleBoxProps) => {
   const navigate = useNavigate();
   const mountainData = useRecoilValue(mountainState);
-  const [data, setData] = useState<Data>();
+  const [data, setData] = useState<MountainData>();
   const moveToDetail = () => {
-    navigate("/detail", { state: { data: data } });
+    if (data) {
+      navigate(`/detail/${data.name}`);
+    }
   };
 
   useEffect(() => {

@@ -20,7 +20,9 @@ const RestaurantButton = ({ mountainName }: Props) => {
   const mountainData = useRecoilValue(mountainState);
   const [data, setData] = useState<MountainData>();
   const moveToDetail = () => {
-    navigate("/detail", { state: { data: data } });
+    if (data) {
+      navigate(`/detail/${data.name}`);
+    }
   };
 
   useEffect(() => {

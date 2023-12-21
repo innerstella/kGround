@@ -1,25 +1,23 @@
 import * as S from "./Recommendation.style";
 
 import { useRecoilState, useRecoilValue } from "recoil";
-import { mountainState, recommendationState } from "../../../recoil/mountain";
+import {
+  MountainData,
+  mountainState,
+  recommendationState,
+} from "../../../recoil/mountain";
 import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { dbService } from "../../../firebase";
 import { useNavigate } from "react-router-dom";
 import { Skeleton } from "@chakra-ui/react";
 
-interface Data {
-  imgUrl: string;
-  name: string;
-  desc: string;
-}
-
 const Recommendation = () => {
   const navigate = useNavigate();
   const mountainData = useRecoilValue(mountainState);
   const [recommendationData, setRecommendationData] =
     useRecoilState(recommendationState);
-  const [data, setData] = useState<Data>();
+  const [data, setData] = useState<MountainData>();
 
   useEffect(() => {
     const docRef = collection(dbService, "recommendationData");
@@ -46,7 +44,9 @@ const Recommendation = () => {
   }, [recommendationData, mountainData]);
 
   const moveToDetail = () => {
-    navigate("/detail", { state: { data: data } });
+    if (data) {
+      navigate(`/detail/${data.name}`);
+    }
   };
 
   return (
