@@ -9,8 +9,10 @@ import { doc, getDoc } from "firebase/firestore";
 import { dbService } from "../../firebase";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { UserData, userLoginState, userState } from "../../recoil/user";
+import { useNavigate } from "react-router-dom";
 
 const MyPage = () => {
+  const navigate = useNavigate();
   const cheeringText = "등산하는 나, 제법 멋져요:)";
   const [userData, setUserData] = useRecoilState(userState);
   const userLoginData = useRecoilValue(userLoginState);
@@ -48,7 +50,11 @@ const MyPage = () => {
         </p>
         <p className="text-hello">안녕하세요!</p>
       </S.NameWrapper>
-      <WideButton type="outline" text="찜 리스트" />
+      <WideButton
+        onClick={() => navigate("/wishlist")}
+        type="outline"
+        text="찜 리스트"
+      />
       <Info />
       <GNB page="mypage" />
     </S.MainWrapper>
