@@ -5,6 +5,9 @@ export const MainWrapper = styled.div`
   bottom: 0.75rem;
 
   z-index: 10;
+
+  display: flex;
+  justify-content: center;
 `;
 
 export const WhiteWrapper = styled.div`
@@ -14,7 +17,7 @@ export const WhiteWrapper = styled.div`
   align-items: center;
   gap: 1.25rem;
 
-  width: 20rem;
+  width: 95vw;
   height: 4.5rem;
 
   border-radius: 1.25rem;
