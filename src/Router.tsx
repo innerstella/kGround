@@ -13,6 +13,8 @@ import KeywordPage from "./pages/Keyword";
 import MyPage from "./pages/Mypage";
 import SignUpPage from "./pages/SignUp";
 import WishListPage from "./pages/Mypage/WishListPage";
+import TermsOfUsePage from "./pages/SignUp/TermsOfUse";
+import TermsOfDataPage from "./pages/SignUp/TermsOfData";
 
 const AppRouter = () => {
   // recoil 상태값 확인
@@ -24,6 +26,11 @@ const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
+        {/* 회원가입 */}
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/termsofuse" element={<TermsOfUsePage />} />
+        <Route path="/termsofdata" element={<TermsOfDataPage />} />
+
         {/* 비로그인 접근 가능 */}
         <Route path="/" element={<StartPage />} />
         <Route path="/main" element={<MainPage />} />
@@ -31,7 +38,6 @@ const AppRouter = () => {
         <Route path="/list/recommendation" element={<RecommendListPage />} />
         <Route path="/list/subway" element={<SubwayListPage />} />
         <Route path="/keywords" element={<KeywordPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
 
         {/* 로그인 필요 */}
         <Route path="/mypage" element={<MyPage />} />

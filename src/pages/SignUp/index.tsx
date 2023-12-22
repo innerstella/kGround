@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import WideButton from "../../components/wide-button/WideButton";
 import * as S from "./SignUp.style";
 
-import { Input, Select, useToast } from "@chakra-ui/react";
+import { IconButton, Input, Select, useToast } from "@chakra-ui/react";
 import { doc, setDoc } from "firebase/firestore";
 import { dbService } from "../../firebase";
 import BackBar from "./components/BackBar";
 import { useLocation, useNavigate } from "react-router-dom";
+import Terms from "./components/Terms";
 
 const SignUpPage = () => {
   const toast = useToast();
@@ -15,10 +16,29 @@ const SignUpPage = () => {
   const [name, setName] = useState<string>("");
   const [gender, setGender] = useState<number>(0);
   const [birth, setBirth] = useState<string>("");
+  const [uid, setUid] = useState<string>("");
 
-  const uid = location.state.uid;
+  useEffect(() => {
+    if (location.state === null) {
+      navigate("/");
+    } else {
+      setUid(location.state.uid);
+    }
+  }, []);
 
   const signUp = () => {
+    // 약관 모두 동의 확인
+    const isAgree = localStorage.getItem("checkAll");
+    if (isAgree === "false") {
+      toast({
+        title: "약관에 동의해주세요.",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
+      return;
+    }
+
     // 예외 처리
     if (name === "") {
       toast({
@@ -95,6 +115,10 @@ const SignUpPage = () => {
             value={birth}
             onChange={(e) => setBirth(e.target.value)}
           />
+        </div>
+        <div className="input">
+          <p className="body1">약관동의</p>
+          <Terms />
         </div>
       </S.InputWrapper>
       <WideButton text="산책하러가기" type="fill" onClick={signUp} />
