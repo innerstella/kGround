@@ -85,6 +85,8 @@ export const MoreWrapper = styled.div`
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+
+    white-space: nowrap;
   }
 `;
 export const SkeletonWrapper = styled.div`
