@@ -1,11 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Info = () => {
+  const navigate = useNavigate();
   return (
     <MainWrapper>
       <p className="title">앱 정보</p>
-      <p className="text">이용 약관</p>
-      <p className="text">개인정보 처리방침</p>
+      <p className="text" onClick={() => navigate("/termsofuse")}>
+        이용 약관
+      </p>
+      <p className="text" onClick={() => navigate("/termsofdata")}>
+        개인정보 처리방침
+      </p>
     </MainWrapper>
   );
 };
@@ -20,6 +26,8 @@ const MainWrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
+
+  width: 100%;
 
   .title {
     color: var(--Text-Color, #0e1513);
