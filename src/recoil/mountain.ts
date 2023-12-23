@@ -26,6 +26,7 @@ export interface MountainData {
   walkingDistance: number;
   walkingTime: number;
   diner: Diner[];
+  keywordList: number[];
 }
 
 export const mountainState = atom<MountainData[]>({

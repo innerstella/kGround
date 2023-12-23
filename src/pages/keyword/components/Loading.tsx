@@ -6,7 +6,7 @@ const Loading = () => {
       thickness="4px"
       speed="0.65s"
       emptyColor="gray.200"
-      color="var(--blue100)"
+      color="teal"
       size="xl"
     />
   );

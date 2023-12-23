@@ -3,9 +3,8 @@ import { useToast } from "@chakra-ui/react";
 
 import * as S from "./Keyword.style";
 
-import Bubble from "../../components/Bubble";
+import Bubble from "./components/Bubble";
 import KeywordButton from "../../components/keyword-button/KeywordButton";
-import RectangleButton from "../../components/RectangleButton";
 
 import keywordData from "../../data/keyword-json.json";
 import AppBar from "../../components/app-bar/AppBar";
@@ -35,9 +34,9 @@ const KeywordPage = () => {
   const toast = useToast();
   const clickNext = () => {
     if (clickedList.length > 0) {
-      // navigate("/result", {
-      //   state: clickedList,
-      // });
+      navigate("/result", {
+        state: clickedList,
+      });
     } else {
       toast({
         title: "키워드를 1개 이상 선택해주세요!",
@@ -63,11 +62,13 @@ const KeywordPage = () => {
           );
         })}
       </S.KeywordWrapper>
-      <WideButton
-        text="여행지 추천 받기"
-        onClick={() => clickNext()}
-        type="fill"
-      />
+      <div className="fixed-bottom">
+        <WideButton
+          text="여행지 추천 받기"
+          onClick={() => clickNext()}
+          type="fill"
+        />
+      </div>
       <GNB page="search" />
     </S.MainWrapper>
   );

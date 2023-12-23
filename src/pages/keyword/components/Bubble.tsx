@@ -41,7 +41,7 @@ const Box = styled.div`
     font-size: 1.125rem;
     font-style: normal;
     font-weight: 500;
-    line-height: normal;
+    line-height: 1.5rem;
     color: black;
   }
 `;
