@@ -11,13 +11,6 @@ const BackBar = () => {
         alt="back"
         onClick={() => navigte(-1)}
       />
-      {/* <img className="logo" src="/assets/image/img-logo.png" alt="logo" />
-      <img
-        className="ic"
-        src="/assets/svg/ic-home-off.svg"
-        alt="home"
-        onClick={() => navigte("/main")}
-      /> */}
     </MainWrapper>
   );
 };

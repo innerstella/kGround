@@ -10,6 +10,4 @@ export const MainWrapper = styled.div`
 
 export const Logo = styled.img`
   width: 10rem;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
 `;

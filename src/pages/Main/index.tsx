@@ -30,7 +30,7 @@ const MainPage = () => {
 
   return (
     <S.MainWrapper>
-      <S.Logo src="/assets/image/img-logo.png" alt="logo" />
+      <S.Logo src="/assets/logo.png" alt="logo" />
       <Recommendation />
       <Subway />
       <Banner />
