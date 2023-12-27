@@ -16,6 +16,10 @@ export const Text = styled.div`
   align-items: center;
 
   width: 100%;
+  .flex-row {
+    display: flex;
+    flex-direction: row;
+  }
   .sub1 {
     color: var(--Text-Color, #0e1513);
 
