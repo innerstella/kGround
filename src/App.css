@@ -11,6 +11,15 @@
   --Text-Color: #0e1513;
 
   --green20: rgba(53, 183, 17, 0.1);
+
+  /* Design System */
+  --Primary: #043927;
+  --Secondary: #35b711;
+  --Clicked: rgba(53, 183, 17, 0.2);
+  --Alert: #ff4545;
+  --Black30: #969696;
+  --Black100: black;
+  --White100: white;
 }
 
 /* font */

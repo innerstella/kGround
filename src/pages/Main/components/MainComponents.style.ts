@@ -52,7 +52,7 @@ export const Text = styled.div`
     padding-left: 0.87rem;
   }
   .sub4 {
-    color: var(--black30);
+    color: var(--Black30);
 
     font-family: Pretendard;
     font-size: 1.125rem;
