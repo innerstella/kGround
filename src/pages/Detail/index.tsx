@@ -7,6 +7,7 @@ import WishButton from "./components/WishButton";
 import { useRecoilValue } from "recoil";
 import { MountainData, mountainState } from "../../recoil/mountain";
 import { useEffect, useState } from "react";
+import ReviewButton from "./components/ReviewButton";
 
 const DetailPage = () => {
   const mountainData = useRecoilValue(mountainState);
@@ -45,6 +46,10 @@ const DetailPage = () => {
           <div className="btns-wrapper">
             <ShareButton />
             <WishButton mountainName={data.name} />
+            <ReviewButton
+              mountainName={data.name}
+              mountainImgUrl={data.imgUrl}
+            />
           </div>
         </S.ImgWrapper>
 

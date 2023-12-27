@@ -16,6 +16,8 @@ import WishListPage from "./pages/Mypage/WishListPage";
 import TermsOfUsePage from "./pages/SignUp/TermsOfUse";
 import TermsOfDataPage from "./pages/SignUp/TermsOfData";
 import ResultPage from "./pages/Keyword/Result";
+import ReviewWritePage from "./pages/Mypage/ReviewWritePage";
+import ReviewListPage from "./pages/Mypage/ReviewListPage";
 
 const AppRouter = () => {
   // recoil 상태값 확인
@@ -45,6 +47,8 @@ const AppRouter = () => {
         {/* 로그인 필요 */}
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/wishlist" element={<WishListPage />} />
+        <Route path="/review/new" element={<ReviewWritePage />} />
+        <Route path="/review/list" element={<ReviewListPage />} />
 
         {/* 관리자 페이지 */}
         <Route path="/create" element={<CreatePage />} />

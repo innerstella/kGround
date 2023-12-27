@@ -56,11 +56,13 @@ const KeywordPage = () => {
       <Bubble text="💬 어떤 여행을 하고 싶은가요?" />
       <S.KeywordWrapper>
         {outputData.map((elem) => {
+          console.log(elem);
           return (
             <KeywordButton
               key={elem.id}
               elem={elem}
               onClick={() => clickButton(elem.id)}
+              animation={true}
             />
           );
         })}

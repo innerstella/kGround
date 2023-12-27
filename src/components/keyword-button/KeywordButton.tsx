@@ -10,9 +10,10 @@ type Elem = {
 type Props = {
   elem: Elem;
   onClick: () => void;
+  animation: boolean;
 };
 
-const KeywordButton = ({ elem, onClick }: Props) => {
+const KeywordButton = ({ elem, onClick, animation }: Props) => {
   // animation random delay
   const min = 0.3,
     max = 0.6;
@@ -24,6 +25,15 @@ const KeywordButton = ({ elem, onClick }: Props) => {
     setIsClicked(!isClicked);
     onClick();
   };
+
+  if (!animation) {
+    return (
+      <Button onClick={() => clickButton()} isClicked={isClicked}>
+        <p className="text">{elem.name}</p>
+      </Button>
+    );
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.5 }}

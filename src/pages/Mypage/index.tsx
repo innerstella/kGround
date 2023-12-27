@@ -59,6 +59,11 @@ const MyPage = () => {
             type="outline"
             text="찜 리스트"
           />
+          <WideButton
+            onClick={() => navigate("/review/list")}
+            type="outline"
+            text="리뷰 기록"
+          />
           <Info />
         </>
       ) : (

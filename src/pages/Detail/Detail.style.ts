@@ -56,9 +56,12 @@ export const ImgWrapper = styled.div<ImgWrapperProps>`
   .btns-wrapper {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
     gap: 1rem;
 
     padding-top: 6rem;
+    width: 100%;
   }
 `;
 
