@@ -6,7 +6,7 @@ import * as S from "./Keyword.style";
 import Bubble from "./components/Bubble";
 import KeywordButton from "../../components/keyword-button/KeywordButton";
 
-import keywordData from "../../data/keyword-json.json";
+import keywordData from "../../data/keyword-id.json";
 import AppBar from "../../components/app-bar/AppBar";
 import GNB from "../../components/gnb/GNB";
 import WideButton from "../../components/wide-button/WideButton";
@@ -15,10 +15,13 @@ const KeywordPage = () => {
   const navigate = useNavigate();
 
   // keyword data
-  const keywordList = [];
-  for (const key in keywordData) {
-    keywordList.push(keywordData[key]);
-  }
+  const displayID = [2, 4, 5, 10, 12, 13, 14, 15];
+  const outputData = Object.entries(keywordData)
+    .map(([id, name]) => ({
+      id: parseInt(id),
+      name,
+    }))
+    .filter((elem) => displayID.includes(elem.id));
 
   // clicked keyword
   let clickedList: number[] = [];
@@ -52,7 +55,7 @@ const KeywordPage = () => {
       <AppBar />
       <Bubble text="💬 어떤 여행을 하고 싶은가요?" />
       <S.KeywordWrapper>
-        {keywordList.map((elem) => {
+        {outputData.map((elem) => {
           return (
             <KeywordButton
               key={elem.id}
