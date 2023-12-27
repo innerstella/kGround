@@ -38,6 +38,8 @@ export const TagWrapper = styled.div`
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+
+    white-space: nowrap;
   }
 `;
 

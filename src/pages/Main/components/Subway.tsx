@@ -25,8 +25,8 @@ const Subway = () => {
   return (
     <S.MainWrapper>
       <S.Text>
-        <span className="sub1">지하철 역에서 가까운&nbsp;</span>
-        <span className="sub2">산&nbsp;</span>
+        <p className="sub1">지하철 역에서 가까운&nbsp;</p>
+        <p className="sub2">산&nbsp;</p>
         <img
           onClick={() => {
             navigate("/list/subway");
@@ -34,6 +34,7 @@ const Subway = () => {
           src="/assets/svg/ic-arrow-right.svg"
           alt="more"
         />
+        <p className="sub4">더보기</p>
       </S.Text>
       <S.ButtonWrapper>
         <div className="gap">

@@ -12,8 +12,10 @@ export const MainWrapper = styled.div`
 
 export const Text = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+
+  width: 100%;
   .sub1 {
     color: var(--Text-Color, #0e1513);
 
@@ -23,6 +25,8 @@ export const Text = styled.div`
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+
+    white-space: nowrap;
   }
   .sub2 {
     color: var(--Point-Color, #35b711);
@@ -33,6 +37,8 @@ export const Text = styled.div`
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+
+    white-space: nowrap;
   }
   .sub3 {
     color: #000;
@@ -44,6 +50,18 @@ export const Text = styled.div`
     line-height: normal;
 
     padding-left: 0.87rem;
+  }
+  .sub4 {
+    color: var(--black30);
+
+    font-family: Pretendard;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    white-space: pre-wrap;
+    padding-top: 0.1rem;
   }
 `;
 
