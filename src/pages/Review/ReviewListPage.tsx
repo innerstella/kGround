@@ -10,10 +10,12 @@ import { ReviewData } from "../../recoil/review";
 import { useEffect, useState } from "react";
 import ReviewListCard from "./components/ReviewListCard";
 import Loading from "../Keyword/components/Loading";
+import { useNavigate } from "react-router-dom";
 
 const ReviewListPage = () => {
   const userData = useRecoilValue(userState);
   const mountainData = useRecoilValue(mountainState);
+  const navigate = useNavigate();
 
   const [userReviewList, setUserReviewList] = useState<ReviewData[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -51,8 +53,17 @@ const ReviewListPage = () => {
       <A.Divider />
       {isLoaded ? (
         <>
-          {userReviewList?.map((elem) => {
-            return <ReviewListCard reviewData={elem} />;
+          {userReviewList?.map((elem, idx) => {
+            return (
+              <ReviewListCard
+                reviewData={elem}
+                onClick={() =>
+                  navigate(`/review/${reviewList[idx]}`, {
+                    state: { reviewData: elem },
+                  })
+                }
+              />
+            );
           })}
         </>
       ) : (

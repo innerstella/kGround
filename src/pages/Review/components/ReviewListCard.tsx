@@ -3,16 +3,18 @@ import { ReviewData } from "../../../recoil/review";
 import { useRecoilValue } from "recoil";
 import { mountainState } from "../../../recoil/mountain";
 import getDateString from "../../../utils/getDateString";
-import ShowStar from "./ShowStar";
 import TagButton from "../../../components/tag-button/TagButton";
 import reviewJson from "../../../data/review.json";
 import { useEffect, useState } from "react";
+import ShowStar from "./ShowStar";
+import { useNavigate } from "react-router-dom";
 
 interface ReviewListCardProps {
   reviewData: ReviewData;
+  onClick: () => void;
 }
 
-const ReviewListCard = ({ reviewData }: ReviewListCardProps) => {
+const ReviewListCard = ({ reviewData, onClick }: ReviewListCardProps) => {
   const mountainData = useRecoilValue(mountainState);
   const mountainImg = mountainData.find(
     (elem) => elem.name === reviewData.reviewMountain
@@ -56,7 +58,7 @@ const ReviewListCard = ({ reviewData }: ReviewListCardProps) => {
   }, []);
 
   return (
-    <MainWrapper isTag={isTag}>
+    <MainWrapper isTag={isTag} onClick={onClick}>
       <p className="mountainName">{reviewData.reviewMountain}</p>
       <div className="flex-row">
         <img
@@ -81,7 +83,7 @@ const ReviewListCard = ({ reviewData }: ReviewListCardProps) => {
 
 export default ReviewListCard;
 
-export const MainWrapper = styled.div<{ isTag: boolean }>`
+const MainWrapper = styled.div<{ isTag: boolean }>`
   width: 100%;
   height: ${(props) => (props.isTag ? "15rem" : "auto")};
   display: inline-flex;

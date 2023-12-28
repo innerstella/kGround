@@ -19,6 +19,7 @@ import ResultPage from "./pages/Keyword/Result";
 import ReviewWritePage from "./pages/Review/ReviewWritePage";
 import ReviewListPage from "./pages/Review/ReviewListPage";
 import ReivewFinishPage from "./pages/Review/ReviewFinish";
+import ReviewDetailPage from "./pages/Review/ReviewDetail";
 
 const AppRouter = () => {
   // recoil 상태값 확인
@@ -44,6 +45,7 @@ const AppRouter = () => {
 
         <Route path="/keywords" element={<KeywordPage />} />
         <Route path="/result" element={<ResultPage />} />
+        <Route path="/review/:id" element={<ReviewDetailPage />} />
 
         {/* 로그인 필요 */}
         <Route path="/mypage" element={<MyPage />} />
