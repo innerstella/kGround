@@ -4,7 +4,7 @@ import GNB from "../../components/gnb/GNB";
 import WideButton from "../../components/wide-button/WideButton";
 import * as S from "./Mypage.style";
 import Cheering from "./components/Cheering";
-import Info from "./components/Info";
+import Info from "../Review/components/Info";
 import { doc, getDoc } from "firebase/firestore";
 import { dbService } from "../../firebase";
 import { useRecoilState, useRecoilValue } from "recoil";

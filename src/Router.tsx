@@ -16,9 +16,9 @@ import WishListPage from "./pages/Mypage/WishListPage";
 import TermsOfUsePage from "./pages/SignUp/TermsOfUse";
 import TermsOfDataPage from "./pages/SignUp/TermsOfData";
 import ResultPage from "./pages/Keyword/Result";
-import ReviewWritePage from "./pages/Mypage/ReviewWritePage";
-import ReviewListPage from "./pages/Mypage/ReviewListPage";
-import ReivewFinishPage from "./pages/Mypage/ReviewFinish";
+import ReviewWritePage from "./pages/Review/ReviewWritePage";
+import ReviewListPage from "./pages/Review/ReviewListPage";
+import ReivewFinishPage from "./pages/Review/ReviewFinish";
 
 const AppRouter = () => {
   // recoil 상태값 확인
