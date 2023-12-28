@@ -87,7 +87,7 @@ const MainWrapper = styled.div<{ isTag: boolean }>`
   width: 100%;
   height: ${(props) => (props.isTag ? "15rem" : "auto")};
   display: inline-flex;
-  padding: 1.25rem 2.5rem 1.25rem 0.875rem;
+  padding: 1.25rem 1rem 1.25rem 1rem;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
