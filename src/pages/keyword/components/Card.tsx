@@ -3,12 +3,14 @@ import { motion } from "framer-motion";
 
 import keywordData from "../../../data/keyword-id.json";
 import { MountainData } from "../../../recoil/mountain";
+import { useNavigate } from "react-router-dom";
 
 interface CardProps {
   data: MountainData;
 }
 
 const CardSection = ({ data }: CardProps) => {
+  const navigate = useNavigate();
   //keyword
   type Keyword = {
     [key: string]: string;
@@ -22,8 +24,10 @@ const CardSection = ({ data }: CardProps) => {
     keywordList += " ";
   });
 
+  console.log(data.name);
+
   return (
-    <MainWrapper>
+    <MainWrapper onClick={() => navigate(`/detail/${data.name}`)}>
       <motion.div
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
