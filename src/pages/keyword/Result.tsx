@@ -29,7 +29,7 @@ const ResultPage = () => {
     const list = mountainData.filter((elem) => {
       if (elem.keywordList !== undefined) {
         const hasCommon = elem.keywordList.some((elem) =>
-          clickedList.includes(elem)
+          clickedList.includes(+elem)
         );
         if (hasCommon) return elem;
       }
