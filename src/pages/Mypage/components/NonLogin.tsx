@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import LoginButton from "../../Start/components/LoginButton";
 
-const NonLogin = () => {
+const NonLoginPage = () => {
   return (
     <StartContainer>
       <Image src="/assets/image/img-mountain.png" alt="logo" />
@@ -11,7 +11,7 @@ const NonLogin = () => {
   );
 };
 
-export default NonLogin;
+export default NonLoginPage;
 
 export const StartContainer = styled.div`
   background-color: white;
@@ -22,7 +22,7 @@ export const StartContainer = styled.div`
   justify-content: center;
   flex-direction: column;
 
-  margin-top: 20vh;
+  margin-top: 30vh;
 `;
 
 export const Subtitle = styled.p`

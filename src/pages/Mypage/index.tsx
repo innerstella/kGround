@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import NonLogin from "./components/NonLogin";
 import { mountainState } from "../../recoil/mountain";
 import Loading from "../Keyword/components/Loading";
+import NonLoginPage from "./components/NonLogin";
 
 const MyPage = () => {
   const navigate = useNavigate();
@@ -117,7 +118,7 @@ const MyPage = () => {
           <Info />
         </>
       ) : (
-        <NonLogin />
+        <NonLoginPage />
       )}
 
       <GNB page="mypage" />

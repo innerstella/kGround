@@ -20,6 +20,7 @@ import ReviewWritePage from "./pages/Review/ReviewWritePage";
 import ReviewListPage from "./pages/Review/ReviewListPage";
 import ReivewFinishPage from "./pages/Review/ReviewFinish";
 import ReviewDetailPage from "./pages/Review/ReviewDetail";
+import PrivateRouter from "./PrivateRouter";
 
 const AppRouter = () => {
   // recoil 상태값 확인
@@ -42,17 +43,28 @@ const AppRouter = () => {
         <Route path="/detail/:id" element={<DetailPage />} />
         <Route path="/list/recommendation" element={<RecommendListPage />} />
         <Route path="/list/subway" element={<SubwayListPage />} />
-
         <Route path="/keywords" element={<KeywordPage />} />
         <Route path="/result" element={<ResultPage />} />
-        <Route path="/review/:id" element={<ReviewDetailPage />} />
 
         {/* 로그인 필요 */}
-        <Route path="/mypage" element={<MyPage />} />
-        <Route path="/wishlist" element={<WishListPage />} />
-        <Route path="/review/new" element={<ReviewWritePage />} />
-        <Route path="/review/list" element={<ReviewListPage />} />
-        <Route path="/review/finish" element={<ReivewFinishPage />} />
+        <Route element={<PrivateRouter />}>
+          <Route path="/mypage" element={<MyPage />} />
+        </Route>
+        <Route element={<PrivateRouter />}>
+          <Route path="/wishlist" element={<WishListPage />} />
+        </Route>
+        <Route element={<PrivateRouter />}>
+          <Route path="/review/new" element={<ReviewWritePage />} />
+        </Route>
+        <Route element={<PrivateRouter />}>
+          <Route path="/review/list" element={<ReviewListPage />} />
+        </Route>
+        <Route element={<PrivateRouter />}>
+          <Route path="/review/finish" element={<ReivewFinishPage />} />
+        </Route>
+        <Route element={<PrivateRouter />}>
+          <Route path="/review/:id" element={<ReviewDetailPage />} />
+        </Route>
 
         {/* 관리자 페이지 */}
         <Route path="/create" element={<CreatePage />} />
