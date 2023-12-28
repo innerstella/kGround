@@ -18,7 +18,6 @@ export const NameWrapper = styled.div`
   flex-direction: column;
   gap: 0.2rem;
 
-  padding-bottom: 2rem;
   .text-name {
     color: var(--Point-Color, #35b711);
     font-family: Pretendard;
@@ -45,5 +44,47 @@ export const NameWrapper = styled.div`
     font-weight: 500;
     line-height: 1.5rem;
     letter-spacing: 0.01rem;
+  }
+`;
+
+export const InfoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.62rem;
+  justify-content: flex-start;
+  width: 100%;
+
+  padding-bottom: 2rem;
+
+  .main {
+    padding: 0.625rem 1.25rem;
+    color: var(--Point-Color, #35b711);
+
+    /* H1 */
+    font-family: Pretendard;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  .strong {
+    color: var(--Point-Color, #35b711);
+
+    /* Sub1 */
+    font-family: Pretendard;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  .sub {
+    color: var(--Text-Color, #0e1513);
+
+    /* Body2 */
+    font-family: Pretendard;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.125rem; /* 128.571% */
   }
 `;

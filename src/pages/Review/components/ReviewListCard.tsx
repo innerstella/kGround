@@ -6,7 +6,7 @@ import getDateString from "../../../utils/getDateString";
 import TagButton from "../../../components/tag-button/TagButton";
 import reviewJson from "../../../data/review.json";
 import { useEffect, useState } from "react";
-import ShowStar from "./ShowStar";
+import ShowStar from "../components/ShowStar";
 import { useNavigate } from "react-router-dom";
 
 interface ReviewListCardProps {

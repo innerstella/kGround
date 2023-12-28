@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AppBar from "../../components/app-bar/AppBar";
 import GNB from "../../components/gnb/GNB";
 import WideButton from "../../components/wide-button/WideButton";
@@ -11,6 +11,8 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { UserData, userLoginState, userState } from "../../recoil/user";
 import { useNavigate } from "react-router-dom";
 import NonLogin from "./components/NonLogin";
+import { mountainState } from "../../recoil/mountain";
+import Loading from "../Keyword/components/Loading";
 
 const MyPage = () => {
   const navigate = useNavigate();
@@ -41,6 +43,40 @@ const MyPage = () => {
       });
   }, [setUserData, userLoginData.isLogin, userLoginData.uid]);
 
+  const [mountainCnt, setMountainCnt] = useState(0);
+  const mountainData = useRecoilValue(mountainState);
+  const [mountainElev, setMountainElev] = useState<number>(0);
+  const [elevLoaded, setElevLoaded] = useState(false);
+
+  useEffect(() => {
+    // 산 개수, 총 높이 util 함수
+    const reviewList = userData.userReviewList;
+
+    setMountainCnt(reviewList.length);
+    // 리뷰 가서 산 이름만 긁어오고, 산 데이터 가서 산 고도 긁어오기
+    const getMountainCount = () => {
+      const reviewList = userData.userReviewList;
+      let totalHeight = 0;
+
+      reviewList.forEach(async (elem) => {
+        // elem : reviewDocID
+        const docRef = doc(dbService, "reviewData", elem);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          const name = docSnap.data().reviewMountain;
+          const elev = mountainData.filter((elem) => elem.name === name)[0]
+            .elevation;
+          totalHeight += elev;
+          console.log(name, elev, totalHeight);
+        }
+        setMountainElev(totalHeight);
+        setElevLoaded(true);
+      });
+    };
+    getMountainCount();
+  }, []);
+
   return (
     <S.MainWrapper>
       <AppBar />
@@ -54,6 +90,20 @@ const MyPage = () => {
             </p>
             <p className="text-hello">안녕하세요!</p>
           </S.NameWrapper>
+          <hr />
+          <S.InfoWrapper>
+            {elevLoaded ? (
+              <p className="sub">
+                지금까지 <span className="strong">{mountainCnt}개</span>의 산을
+                완등했어요!
+                <br />
+                등반한 산의 총 높이는&nbsp;
+                <span className="strong">{mountainElev}m</span>예요!
+              </p>
+            ) : (
+              <Loading />
+            )}
+          </S.InfoWrapper>
           <WideButton
             onClick={() => navigate("/wishlist")}
             type="outline"
