@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
+import { reviewState } from "../../../recoil/review";
 
 const Star = () => {
-  const [rateScore, setRateScore] = useState(5);
+  const [reviewData, setReviewData] = useRecoilState(reviewState);
+
+  const [rateScore, setRateScore] = useState(0);
   const [star1, setStar1] = useState(false);
   const [star2, setStar2] = useState(false);
   const [star3, setStar3] = useState(false);
@@ -15,7 +19,6 @@ const Star = () => {
   };
 
   const clickStar = (starScore: number) => {
-    setRateScore(starScore);
     if (starScore === 1) {
       setRateScore(1);
       setStar1(true);
@@ -53,6 +56,10 @@ const Star = () => {
       setStar5(true);
     }
   };
+
+  useEffect(() => {
+    setReviewData({ ...reviewData, reviewStar: rateScore });
+  }, [rateScore]);
 
   return (
     <MainWrapper>

@@ -1,10 +1,27 @@
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
+import { reviewState } from "../../../recoil/review";
+import { useEffect, useState } from "react";
 
 const Comment = () => {
+  const [reviewData, setReviewData] = useRecoilState(reviewState);
+  const [comment, setComment] = useState("");
+
+  const changeComment = (e: any) => {
+    setComment(e.target.value);
+  };
+
+  useEffect(() => {
+    setReviewData({
+      ...reviewData,
+      reviewComment: comment,
+    });
+  }, [comment]);
+
   return (
     <MainWrapper>
       <p className="text">코멘트를 남겨주세요</p>
-      <textarea className="input" />
+      <textarea className="input" onChange={(e) => changeComment(e)} />
     </MainWrapper>
   );
 };

@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import KeywordButton from "../../../components/keyword-button/KeywordButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRecoilState, useResetRecoilState } from "recoil";
+import { ReviewData, reviewState } from "../../../recoil/review";
 
 interface Props {
   data: {
@@ -8,13 +10,16 @@ interface Props {
   };
   question: string;
 }
+
+const questionList: { [key: string]: string } = {
+  reviewWhen: "언제 가셨나요?",
+  reviewWho: "누구와 가셨나요?",
+  reviewMood: "분위기는 어땠나요?",
+  reviewETC: "또 어떤 점이 좋았나요?",
+};
+
 const DetailReview = ({ data, question }: Props) => {
-  const questionList: { [key: string]: string } = {
-    reviewWhen: "언제 가셨나요?",
-    reviewWho: "누구와 가셨나요?",
-    reviewMood: "분위기는 어땠나요?",
-    reviewETC: "또 어떤 점이 좋았나요?",
-  };
+  const [reviewData, setReviewData] = useRecoilState<ReviewData>(reviewState);
 
   const outputData = Object.entries(data).map(([id, name]) => ({
     id: parseInt(id),
@@ -24,7 +29,38 @@ const DetailReview = ({ data, question }: Props) => {
   const [clickedToggle, setClickedToggle] = useState(false);
 
   const clickButton = (id: number) => {
-    console.log(id);
+    if (question === "reviewWhen") {
+      setReviewData({
+        ...reviewData,
+        reviewWhen: id,
+      });
+    }
+    if (question === "reviewWho") {
+      setReviewData({
+        ...reviewData,
+        reviewWho: id,
+      });
+    }
+    if (question === "reviewMood") {
+      const prev = reviewData.reviewMood;
+      const next = prev.includes(id)
+        ? prev.filter((elem) => elem !== id)
+        : [...prev, id];
+      setReviewData({
+        ...reviewData,
+        reviewMood: next.sort((a, b) => a - b),
+      });
+    }
+    if (question === "reviewETC") {
+      const prev = reviewData.reviewETC;
+      const next = prev.includes(id)
+        ? prev.filter((elem) => elem !== id)
+        : [...prev, id];
+      setReviewData({
+        ...reviewData,
+        reviewETC: next.sort((a, b) => a - b),
+      });
+    }
   };
 
   return (
