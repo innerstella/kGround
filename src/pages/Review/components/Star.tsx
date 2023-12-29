@@ -18,42 +18,15 @@ const Star = () => {
     false: "off",
   };
 
-  const clickStar = (starScore: number) => {
-    if (starScore === 1) {
-      setRateScore(1);
-      setStar1(true);
-      setStar2(false);
-      setStar3(false);
-      setStar4(false);
-      setStar5(false);
-    } else if (starScore === 2) {
-      setRateScore(2);
-      setStar1(true);
-      setStar2(true);
-      setStar3(false);
-      setStar4(false);
-      setStar5(false);
-    } else if (starScore === 3) {
-      setRateScore(3);
-      setStar1(true);
-      setStar2(true);
-      setStar3(true);
-      setStar4(false);
-      setStar5(false);
-    } else if (starScore === 4) {
-      setRateScore(4);
-      setStar1(true);
-      setStar2(true);
-      setStar3(true);
-      setStar4(true);
-      setStar5(false);
-    } else if (starScore === 5) {
-      setRateScore(5);
-      setStar1(true);
-      setStar2(true);
-      setStar3(true);
-      setStar4(true);
-      setStar5(true);
+  const clickStar = (e: any) => {
+    const starID = e.target.id;
+    setRateScore(Number(starID));
+
+    const funcList = [setStar1, setStar2, setStar3, setStar4, setStar5];
+
+    for (let i = 0; i < 5; i++) {
+      if (i < +starID) funcList[i](true);
+      else funcList[i](false);
     }
   };
 
@@ -66,34 +39,39 @@ const Star = () => {
       <p className="text">여행지에 만족하셨나요?</p>
       <StarWrapper>
         <img
-          onClick={() => clickStar(1)}
+          onClick={(e) => clickStar(e)}
           className="star"
           src={`/assets/svg/ic-star-${icList[star1.toString()]}.svg`}
           alt="star"
+          id="1"
         />
         <img
-          onClick={() => clickStar(2)}
+          onClick={(e) => clickStar(e)}
           className="star"
           src={`/assets/svg/ic-star-${icList[star2.toString()]}.svg`}
           alt="star"
+          id="2"
         />
         <img
-          onClick={() => clickStar(3)}
+          onClick={(e) => clickStar(e)}
           className="star"
           src={`/assets/svg/ic-star-${icList[star3.toString()]}.svg`}
           alt="star"
+          id="3"
         />
         <img
-          onClick={() => clickStar(4)}
+          onClick={(e) => clickStar(e)}
           className="star"
           src={`/assets/svg/ic-star-${icList[star4.toString()]}.svg`}
           alt="star"
+          id="4"
         />
         <img
-          onClick={() => clickStar(5)}
+          onClick={(e) => clickStar(e)}
           className="star"
           src={`/assets/svg/ic-star-${icList[star5.toString()]}.svg`}
           alt="star"
+          id="5"
         />
       </StarWrapper>
     </MainWrapper>
