@@ -53,6 +53,10 @@ const MyPage = () => {
     // 산 개수, 총 높이 util 함수
     const reviewList = userData.userReviewList;
 
+    if (reviewList.length === 0) {
+      setElevLoaded(true);
+      return;
+    }
     setMountainCnt(reviewList.length);
     // 리뷰 가서 산 이름만 긁어오고, 산 데이터 가서 산 고도 긁어오기
     const getMountainCount = () => {
@@ -69,7 +73,6 @@ const MyPage = () => {
           const elev = mountainData.filter((elem) => elem.name === name)[0]
             .elevation;
           totalHeight += elev;
-          console.log(name, elev, totalHeight);
         }
         setMountainElev(totalHeight);
         setElevLoaded(true);
