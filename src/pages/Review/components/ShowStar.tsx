@@ -21,7 +21,7 @@ const ShowStar = ({ reviewStar }: ShowStarProps) => {
         return (
           <img
             className="star"
-            src={`/assets/svg/ic-star-${icList[elem.toString()]}.svg`}
+            src={`/assets/icon/ic-star-${icList[elem.toString()]}.svg`}
             alt="star"
           />
         );

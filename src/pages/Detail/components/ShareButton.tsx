@@ -31,7 +31,7 @@ const ShareButton = () => {
   };
   return (
     <MainWrapper>
-      <img onClick={onOpen} src="/assets/svg/ic-share.svg" alt="share" />
+      <img onClick={onOpen} src="/assets/icon/ic-share.svg" alt="share" />
 
       <Modal isOpen={isOpen} onClose={onClose} size="xs" isCentered>
         <ModalOverlay />
@@ -56,7 +56,7 @@ const ShareButton = () => {
               <img
                 onClick={clickUrl}
                 className="img"
-                src="/assets/svg/ic-link.svg"
+                src="/assets/icon/ic-link.svg"
                 alt="link"
               />
             </BodyWrapper>

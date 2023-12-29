@@ -18,7 +18,7 @@ const GNB = ({ page }: Props) => {
             <>
               <img
                 className="icon"
-                src="/assets/svg/ic-home-on.svg"
+                src="/assets/icon/ic-home-on.svg"
                 alt="home"
               />
               <p className="text-on">Home</p>
@@ -27,7 +27,7 @@ const GNB = ({ page }: Props) => {
             <>
               <img
                 className="icon off"
-                src="/assets/svg/ic-home-off.svg"
+                src="/assets/icon/ic-home-off.svg"
                 alt="home"
               />
               <p className="text-off">Home</p>
@@ -42,7 +42,7 @@ const GNB = ({ page }: Props) => {
             <>
               <img
                 className="icon"
-                src="/assets/svg/ic-search-on.svg"
+                src="/assets/icon/ic-search-on.svg"
                 alt="search"
               />
               <p className="text-on">Search</p>
@@ -51,7 +51,7 @@ const GNB = ({ page }: Props) => {
             <>
               <img
                 className="icon off"
-                src="/assets/svg/ic-search-off.svg"
+                src="/assets/icon/ic-search-off.svg"
                 alt="search"
               />
               <p className="text-off">Search</p>
@@ -66,7 +66,7 @@ const GNB = ({ page }: Props) => {
             <>
               <img
                 className="icon"
-                src="/assets/svg/ic-mypage-on.svg"
+                src="/assets/icon/ic-mypage-on.svg"
                 alt="wishlist"
               />
               <p className="text-on">Mypage</p>
@@ -75,7 +75,7 @@ const GNB = ({ page }: Props) => {
             <>
               <img
                 className="icon off"
-                src="/assets/svg/ic-mypage-off.svg"
+                src="/assets/icon/ic-mypage-off.svg"
                 alt="wishlist"
               />
               <p className="text-off">Mypage</p>

@@ -8,7 +8,7 @@ const Diner = ({ data }: any) => {
           {data.dinerName} : {data.dinerMenu}
         </span>
         <div className="flex-row">
-          <img className="ic" src="/assets/svg/ic-walk-green.svg" alt="walk" />
+          <img className="ic" src="/assets/icon/ic-walk-green.svg" alt="walk" />
           <span className="time">{data.dinerTime}분</span>
         </div>
       </div>

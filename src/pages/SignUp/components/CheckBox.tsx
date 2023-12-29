@@ -8,7 +8,7 @@ interface CheckBoxProps {
 const CheckBox = ({ onClick, isClicked }: CheckBoxProps) => {
   return (
     <MainWrapper onClick={onClick}>
-      {isClicked && <img src="/assets/svg/ic-check-green.svg" alt="check" />}
+      {isClicked && <img src="/assets/icon/ic-check-green.svg" alt="check" />}
     </MainWrapper>
   );
 };

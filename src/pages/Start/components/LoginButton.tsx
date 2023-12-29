@@ -64,14 +64,18 @@ const LoginButton = ({ type }: LoginButtonProps) => {
     <S.LoginWrapper>
       {type === "google" && (
         <S.Login onClick={signIn}>
-          <img src="/assets/svg/ic-google.svg" alt="google" className="svg" />
+          <img src="/assets/icon/ic-google.svg" alt="google" className="svg" />
           <p className="text">구글 계정으로 시작하기</p>
         </S.Login>
       )}
       {type === "both" && (
         <>
           <S.Login onClick={signIn}>
-            <img src="/assets/svg/ic-google.svg" alt="google" className="svg" />
+            <img
+              src="/assets/icon/ic-google.svg"
+              alt="google"
+              className="svg"
+            />
             <p className="text">구글 계정으로 시작하기</p>
           </S.Login>
           <S.NonLogin onClick={moveToMain}>

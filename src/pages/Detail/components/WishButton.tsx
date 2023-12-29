@@ -68,9 +68,9 @@ const WishButton = ({ mountainName }: Props) => {
   return (
     <MainWrapper onClick={clickWish}>
       {isWish ? (
-        <img src="/assets/svg/ic-wish-on.svg" alt="wishlist" />
+        <img src="/assets/icon/ic-wish-on.svg" alt="wishlist" />
       ) : (
-        <img src="/assets/svg/ic-wish.svg" alt="wishlist" />
+        <img src="/assets/icon/ic-wish.svg" alt="wishlist" />
       )}
     </MainWrapper>
   );

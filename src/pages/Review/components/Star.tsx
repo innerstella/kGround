@@ -41,35 +41,35 @@ const Star = () => {
         <img
           onClick={(e) => clickStar(e)}
           className="star"
-          src={`/assets/svg/ic-star-${icList[star1.toString()]}.svg`}
+          src={`/assets/icon/ic-star-${icList[star1.toString()]}.svg`}
           alt="star"
           id="1"
         />
         <img
           onClick={(e) => clickStar(e)}
           className="star"
-          src={`/assets/svg/ic-star-${icList[star2.toString()]}.svg`}
+          src={`/assets/icon/ic-star-${icList[star2.toString()]}.svg`}
           alt="star"
           id="2"
         />
         <img
           onClick={(e) => clickStar(e)}
           className="star"
-          src={`/assets/svg/ic-star-${icList[star3.toString()]}.svg`}
+          src={`/assets/icon/ic-star-${icList[star3.toString()]}.svg`}
           alt="star"
           id="3"
         />
         <img
           onClick={(e) => clickStar(e)}
           className="star"
-          src={`/assets/svg/ic-star-${icList[star4.toString()]}.svg`}
+          src={`/assets/icon/ic-star-${icList[star4.toString()]}.svg`}
           alt="star"
           id="4"
         />
         <img
           onClick={(e) => clickStar(e)}
           className="star"
-          src={`/assets/svg/ic-star-${icList[star5.toString()]}.svg`}
+          src={`/assets/icon/ic-star-${icList[star5.toString()]}.svg`}
           alt="star"
           id="5"
         />

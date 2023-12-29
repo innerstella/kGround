@@ -70,7 +70,7 @@ const DetailReview = ({ data, question }: Props) => {
         {!clickedToggle ? (
           <img
             className="ic"
-            src="/assets/svg/ic-arrow-up.svg"
+            src="/assets/icon/ic-arrow-up.svg"
             alt="arrow"
             onClick={() => setClickedToggle(!clickedToggle)}
           />
@@ -78,7 +78,7 @@ const DetailReview = ({ data, question }: Props) => {
           <>
             <img
               className="ic"
-              src="/assets/svg/ic-arrow-down.svg"
+              src="/assets/icon/ic-arrow-down.svg"
               alt="arrow"
               onClick={() => setClickedToggle(!clickedToggle)}
             />

@@ -39,7 +39,7 @@ const SubwayListButton = ({ name, idx }: RectangleBoxProps) => {
           {data?.subway} {data?.walkingDistance}m
         </p>
         <div className="flex-row">
-          <img className="ic" src="/assets/svg/ic-walk-green.svg" alt="walk" />
+          <img className="ic" src="/assets/icon/ic-walk-green.svg" alt="walk" />
           <p className="walking-text">{data?.walkingTime}분</p>
         </div>
       </div>

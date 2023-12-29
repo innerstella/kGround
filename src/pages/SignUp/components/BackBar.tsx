@@ -7,7 +7,7 @@ const BackBar = () => {
     <MainWrapper>
       <img
         className="ic"
-        src="/assets/svg/ic-back.svg"
+        src="/assets/icon/ic-back.svg"
         alt="back"
         onClick={() => navigte(-1)}
       />

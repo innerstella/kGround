@@ -4,7 +4,7 @@ const ChipButton = ({ walkingTime }: { walkingTime: number }) => {
   return (
     <MainWrapper>
       <div className="chipButton">
-        <img className="img" src="/assets/svg/ic-walk-white.svg" alt="walk" />
+        <img className="img" src="/assets/icon/ic-walk-white.svg" alt="walk" />
         <p className="text">{walkingTime}분</p>
       </div>
     </MainWrapper>

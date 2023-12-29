@@ -21,7 +21,7 @@ const Top3 = ({ data }: Props) => {
     <S.MainWrapper>
       <S.Center>
         <S.FirstWrapper onClick={() => moveToDetail(data1)}>
-          <img className="icon" src="/assets/svg/ic-prize-1.svg" alt="1" />
+          <img className="icon" src="/assets/icon/ic-prize-1.svg" alt="1" />
           <img className="img" src={data1.imgUrl} alt={data1.name} />
           <p className="title">{data1.name}</p>
           <p className="desc">
@@ -33,7 +33,7 @@ const Top3 = ({ data }: Props) => {
         </S.FirstWrapper>
       </S.Center>
       <S.SecondWrapper onClick={() => moveToDetail(data2)}>
-        <img className="icon" src="/assets/svg/ic-prize-2.svg" alt="2" />
+        <img className="icon" src="/assets/icon/ic-prize-2.svg" alt="2" />
         <img className="img" src={data2.imgUrl} alt={data2.name} />
         <p className="title">{data2.name}</p>
         <p className="desc">
@@ -44,7 +44,7 @@ const Top3 = ({ data }: Props) => {
         <ChipButton walkingTime={data2.walkingTime} />
       </S.SecondWrapper>
       <S.ThirdWrapper onClick={() => moveToDetail(data3)}>
-        <img className="icon" src="/assets/svg/ic-prize-3.svg" alt="3" />
+        <img className="icon" src="/assets/icon/ic-prize-3.svg" alt="3" />
         <img className="img" src={data3.imgUrl} alt={data3.name} />
         <p className="title">{data3.name}</p>
         <p className="desc">

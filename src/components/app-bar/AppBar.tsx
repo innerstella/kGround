@@ -7,14 +7,14 @@ const AppBar = () => {
     <MainWrapper>
       <img
         className="ic"
-        src="/assets/svg/ic-back.svg"
+        src="/assets/icon/ic-back.svg"
         alt="back"
         onClick={() => navigte(-1)}
       />
       <img className="logo" src="/assets/logo.png" alt="logo" />
       <img
         className="ic"
-        src="/assets/svg/ic-home-off.svg"
+        src="/assets/icon/ic-home-off.svg"
         alt="home"
         onClick={() => navigte("/main")}
       />

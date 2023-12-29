@@ -48,7 +48,7 @@ const SubwayButton = ({ type, mountainName }: Props) => {
           <div className="chipButton">
             <img
               className="img"
-              src="/assets/svg/ic-walk-white.svg"
+              src="/assets/icon/ic-walk-white.svg"
               alt="walk"
             />
             <p className="text">{data.walkingTime}분</p>
@@ -69,7 +69,7 @@ const SubwayButton = ({ type, mountainName }: Props) => {
           <div className="chipButton">
             <img
               className="img"
-              src="/assets/svg/ic-walk-green.svg"
+              src="/assets/icon/ic-walk-green.svg"
               alt="walk"
             />
             <p className="text">{data.walkingTime}분</p>

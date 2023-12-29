@@ -8,7 +8,7 @@ const CircleButton = ({ type }: Props) => {
   if (type === "main") {
     return (
       <MainWrapper>
-        <img src="/assets/svg/ic-plus.svg" alt="more" />
+        <img src="/assets/icon/ic-plus.svg" alt="more" />
       </MainWrapper>
     );
   }
@@ -16,7 +16,7 @@ const CircleButton = ({ type }: Props) => {
   if (type === "point") {
     return (
       <PointWapper>
-        <img src="/assets/svg/ic-plus.svg" alt="more" />
+        <img src="/assets/icon/ic-plus.svg" alt="more" />
       </PointWapper>
     );
   }

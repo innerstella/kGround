@@ -56,7 +56,7 @@ const DetailPage = () => {
         <S.Wrapper>
           <p className="focus">일반 정보</p>
           <div className="box1">
-            <img src="/assets/svg/ic-flag.svg" alt="flag" />
+            <img src="/assets/icon/ic-flag.svg" alt="flag" />
             <p className="text">{data.track}</p>
           </div>
           <div className="box2">

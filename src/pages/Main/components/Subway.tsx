@@ -33,7 +33,7 @@ const Subway = () => {
             navigate("/list/subway");
           }}
         >
-          <img src="/assets/svg/ic-arrow-right.svg" alt="more" />
+          <img src="/assets/icon/ic-arrow-right.svg" alt="more" />
           <p className="sub4">더보기</p>
         </div>
       </S.Text>
