@@ -18,8 +18,9 @@ const Info = () => {
 export default Info;
 
 const MainWrapper = styled.div`
-  position: fixed;
-  bottom: 9rem;
+  /* position: fixed;
+  bottom: 9rem; */
+  margin-top: 10vh;
 
   display: inline-flex;
   padding: 0.75rem 15.9375rem 0.75rem 1.25rem;
@@ -27,7 +28,7 @@ const MainWrapper = styled.div`
   align-items: flex-start;
   gap: 1rem;
 
-  width: 100%;
+  /* width: 100%; */
 
   .title {
     color: var(--Text-Color, #0e1513);
