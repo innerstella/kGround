@@ -1,9 +1,21 @@
+import { useEffect } from "react";
 import styled from "styled-components";
+import { useRecoilState } from "recoil";
+
 import LoginButton from "../../Start/components/LoginButton";
 import GNB from "../../../components/gnb/GNB";
 import AppBar from "../../../components/app-bar/AppBar";
 
+import { mountainState } from "../../../recoil/mountain";
+import loadMountainData from "../../../utils/load/loadMountainData";
+
 const NonLoginPage = () => {
+  const [mountainData, setMountainData] = useRecoilState(mountainState);
+
+  useEffect(() => {
+    loadMountainData().then((res) => setMountainData(res));
+  }, []);
+
   return (
     <StartContainer>
       <AppBar />
