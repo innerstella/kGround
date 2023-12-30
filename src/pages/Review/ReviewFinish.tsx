@@ -56,98 +56,94 @@ const ReivewFinishPage = () => {
       return docSnap.data();
     }
   };
-  useEffect(() => {
-    getReviewData().then((res) => {
-      // 산 주소
-      const data = mountainData.filter(
-        (elem) => elem.name === res?.reviewMountain
-      )[0];
 
-      if (data) {
-        setMountainAddress(data.startAddress);
-        setMountainLoaded(true);
-      }
-
-      // 리뷰 태그 모으기
-      const reviewWhenData: { [key: string]: string } = reviewJson.reviewWhen;
-      const reviewWhoData: { [key: string]: string } = reviewJson.reviewWho;
-      const reviewMoodData: { [key: string]: string } = reviewJson.reviewMood;
-      const reviewETCData: { [key: string]: string } = reviewJson.reviewETC;
-
-      if (res) {
-        const reviewWhenID = res.reviewWhen;
-        const reviewWhoID = res.reviewWho;
-        const reviewMoodIDList = res.reviewMood;
-        const reviewETCIDList = res.reviewETC;
-
-        let currTagList: string[] = [];
-
-        res.reviewWhen > 0 && currTagList.push(reviewWhenData[reviewWhenID]);
-        res.reviewWho > 0 && currTagList.push(reviewWhoData[reviewWhoID]);
-        reviewMoodIDList.length > 0 &&
-          reviewMoodIDList.forEach((elem: number) => {
-            currTagList.push(reviewMoodData[elem]);
-          });
-        reviewETCIDList.length > 0 &&
-          reviewETCIDList.forEach((elem: number) => {
-            currTagList.push(reviewETCData[elem]);
-          });
-
-        setTagList([...tagList, ...currTagList]);
-        setTagLoaded(true);
-      }
-    });
-
-    // 산 개수, 총 높이 util 함수
+  // 총 높이 util 함수
+  const getTotalElev = () => {
     const reviewList = userData.userReviewList;
+    let totalHeight = 0;
 
-    setMountainCnt(reviewList.length);
-    // 리뷰 가서 산 이름만 긁어오고, 산 데이터 가서 산 고도 긁어오기
-    const getMountainCount = () => {
-      const reviewList = userData.userReviewList;
-      let totalHeight = 0;
+    reviewList.forEach(async (elem) => {
+      const docRef = doc(dbService, "reviewData", elem);
+      const docSnap = await getDoc(docRef);
 
-      reviewList.forEach(async (elem) => {
-        // elem : reviewDocID
-        const docRef = doc(dbService, "reviewData", elem);
-        const docSnap = await getDoc(docRef);
-
-        if (docSnap.exists()) {
-          const name = docSnap.data().reviewMountain;
-          const elev = mountainData.filter((elem) => elem.name === name)[0]
-            .elevation;
-          totalHeight += elev;
-          console.log(name, elev, totalHeight);
-        }
-        setMountainElev(totalHeight);
-        setElevLoaded(true);
-      });
-    };
-    getMountainCount();
-  }, []);
+      if (docSnap.exists()) {
+        const name = docSnap.data().reviewMountain;
+        const elev = mountainData.filter((elem) => elem.name === name)[0]
+          .elevation;
+        totalHeight += elev;
+      }
+      setMountainElev(totalHeight);
+      setElevLoaded(true);
+    });
+  };
 
   useEffect(() => {
-    if (!userLoginData.isLogin) return;
+    // user data reload
     const uid = userLoginData.uid;
-
     const docRef = doc(dbService, "userData", uid);
 
     getDoc(docRef)
       .then((docSnapshot) => {
         if (docSnapshot.exists()) {
           const data = docSnapshot.data();
+          const reviewList = data.userReviewList;
+
           setUserData(data as UserData);
-          return data; // Return the document data if it exists
-        } else {
-          console.log("No such document!");
-          return null; // Return null or handle the case when the document doesn't exist
+          setMountainCnt(reviewList.length);
+          getTotalElev();
+
+          getReviewData().then((res) => {
+            // 산 주소
+            const data = mountainData.filter(
+              (elem) => elem.name === res?.reviewMountain
+            )[0];
+
+            if (data) {
+              setMountainAddress(data.startAddress);
+              setMountainLoaded(true);
+            }
+
+            // 리뷰 태그 모으기
+            const reviewWhenData: { [key: string]: string } =
+              reviewJson.reviewWhen;
+            const reviewWhoData: { [key: string]: string } =
+              reviewJson.reviewWho;
+            const reviewMoodData: { [key: string]: string } =
+              reviewJson.reviewMood;
+            const reviewETCData: { [key: string]: string } =
+              reviewJson.reviewETC;
+
+            if (res) {
+              const reviewWhenID = res.reviewWhen;
+              const reviewWhoID = res.reviewWho;
+              const reviewMoodIDList = res.reviewMood;
+              const reviewETCIDList = res.reviewETC;
+              let currTagList: string[] = [];
+
+              res.reviewWhen > 0 &&
+                currTagList.push(reviewWhenData[reviewWhenID]);
+              res.reviewWho > 0 && currTagList.push(reviewWhoData[reviewWhoID]);
+              reviewMoodIDList.length > 0 &&
+                reviewMoodIDList.forEach((elem: number) => {
+                  currTagList.push(reviewMoodData[elem]);
+                });
+              reviewETCIDList.length > 0 &&
+                reviewETCIDList.forEach((elem: number) => {
+                  currTagList.push(reviewETCData[elem]);
+                });
+
+              setTagList([...tagList, ...currTagList]);
+              setTagLoaded(true);
+            } else {
+              setTagLoaded(true);
+            }
+          });
         }
       })
       .catch((error) => {
-        console.error("Error getting document:", error);
-        throw error; // Throw the error to be caught by the calling code
+        throw error;
       });
-  }, [setUserData, userLoginData.isLogin, userLoginData.uid]);
+  }, []);
 
   return (
     <S.MainWrapper>
