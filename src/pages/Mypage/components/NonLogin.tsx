@@ -1,12 +1,16 @@
 import styled from "styled-components";
 import LoginButton from "../../Start/components/LoginButton";
+import GNB from "../../../components/gnb/GNB";
+import AppBar from "../../../components/app-bar/AppBar";
 
 const NonLoginPage = () => {
   return (
     <StartContainer>
+      <AppBar />
       <Image src="/assets/image/img-mountain.png" alt="logo" />
       <Text>로그인이 필요한 페이지입니다</Text>
       <LoginButton type="google" />
+      <GNB page="mypage" />
     </StartContainer>
   );
 };
