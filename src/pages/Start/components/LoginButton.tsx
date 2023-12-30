@@ -24,6 +24,7 @@ const LoginButton = ({ type }: LoginButtonProps) => {
 
   const signIn = async () => {
     signInGoogle().then((res: any) => {
+      console.log(res);
       if (res.user) {
         setUserLogin({ isLogin: true, uid: res.user?.uid });
       }
@@ -47,7 +48,7 @@ const LoginButton = ({ type }: LoginButtonProps) => {
               setUserData(loadData);
 
               // 로그인
-              navigate("/main");
+              // navigate("/main");
             }
           } else {
             // 회원가입

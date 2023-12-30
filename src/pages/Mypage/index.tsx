@@ -5,7 +5,7 @@ import WideButton from "../../components/wide-button/WideButton";
 import * as S from "./Mypage.style";
 import Cheering from "./components/Cheering";
 import Info from "../Review/components/Info";
-import { doc, getDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { dbService } from "../../firebase";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { UserData, userLoginState, userState } from "../../recoil/user";
@@ -45,7 +45,7 @@ const MyPage = () => {
   }, [setUserData, userLoginData.isLogin, userLoginData.uid]);
 
   const [mountainCnt, setMountainCnt] = useState(0);
-  const mountainData = useRecoilValue(mountainState);
+  // const mountainData = useRecoilValue(mountainState);
   const [mountainElev, setMountainElev] = useState<number>(0);
   const [elevLoaded, setElevLoaded] = useState(false);
 
@@ -70,6 +70,10 @@ const MyPage = () => {
 
         if (docSnap.exists()) {
           const name = docSnap.data().reviewMountain;
+          console.log(mountainData);
+          console.log(mountainData.filter((elem) => elem.name === name));
+          // let elev;
+          // if(name)
           const elev = mountainData.filter((elem) => elem.name === name)[0]
             .elevation;
           totalHeight += elev;
@@ -79,6 +83,25 @@ const MyPage = () => {
       });
     };
     getMountainCount();
+  }, []);
+
+  // 산 데이터
+  const [mountainData, setMountainData] = useRecoilState(mountainState);
+
+  useEffect(() => {
+    const docRef = collection(dbService, "mountainData");
+    getDocs(docRef)
+      .then((querySnapshot) => {
+        let data: any[] = [];
+        querySnapshot.forEach((doc) => {
+          data.push(doc.data());
+        });
+
+        setMountainData(data);
+      })
+      .catch((error) => {
+        console.error("Error getting documents: ", error);
+      });
   }, []);
 
   return (

@@ -27,18 +27,43 @@ export const authService = auth.getAuth(fbase);
 export const signInGoogle = () => {
   const provider = new GoogleAuthProvider();
 
+  const authentication = auth.getAuth();
+  auth.signInWithRedirect(authentication, provider);
+
   return auth
-    .setPersistence(authService, auth.browserSessionPersistence)
-    .then(() => {
-      return auth
-        .signInWithPopup(authService, provider)
-        .then((res) => {
-          return res;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    .getRedirectResult(authentication)
+    .then((result) => {
+      return result;
+    })
+    .catch((error) => {
+      return error;
     });
+
+  // return auth
+  //   .setPersistence(authService, auth.browserSessionPersistence)
+  //   .then(() => {
+  //     return auth
+  //       .signInWithRedirect(authService, provider)
+  //       .then((res) => {
+  //         return res;
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   });
+
+  // return auth
+  //   .setPersistence(authService, auth.browserSessionPersistence)
+  //   .then(() => {
+  //     return auth
+  //       .signInWithPopup(authService, provider)
+  //       .then((res) => {
+  //         return res;
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   });
 };
 
 // db
