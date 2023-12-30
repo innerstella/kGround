@@ -1,32 +1,21 @@
-import GNB from "../../components/gnb/GNB";
+import { useEffect } from "react";
+import { useRecoilState } from "recoil";
+
 import * as S from "./Main.style";
+import GNB from "../../components/gnb/GNB";
 import Recommendation from "./components/Recommendation";
 import Subway from "./components/Subway";
-import { useEffect } from "react";
-import { collection, getDocs } from "firebase/firestore";
-import { dbService } from "../../firebase";
-import { useRecoilState } from "recoil";
-import { mountainState } from "../../recoil/mountain";
 import Banner from "../../components/banner/Banner";
+
+import { mountainState } from "../../recoil/mountain";
+import loadMountainData from "../../utils/load/loadMountainData";
 
 const MainPage = () => {
   const [mountainData, setMountainData] = useRecoilState(mountainState);
 
   useEffect(() => {
-    const docRef = collection(dbService, "mountainData");
-    getDocs(docRef)
-      .then((querySnapshot) => {
-        let data: any[] = [];
-        querySnapshot.forEach((doc) => {
-          data.push(doc.data());
-        });
-
-        setMountainData(data);
-      })
-      .catch((error) => {
-        console.error("Error getting documents: ", error);
-      });
-  }, [setMountainData]);
+    loadMountainData().then((res) => setMountainData(res));
+  }, []);
 
   return (
     <S.MainWrapper>
