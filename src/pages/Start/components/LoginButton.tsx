@@ -52,6 +52,7 @@ const LoginButton = ({ type }: LoginButtonProps) => {
               };
 
               setUserData(loadData);
+              navigate("/main");
             }
           } else {
             // 회원가입
