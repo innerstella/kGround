@@ -38,7 +38,8 @@ const AppRouter = () => {
         <Route path="/termsofdata" element={<TermsOfDataPage />} />
 
         {/* 비로그인 접근 가능 */}
-        <Route path="/" element={<StartPage />} />
+        {/* <Route path="/" element={<StartPage />} /> */}
+        <Route path="/" element={<MainPage />} />
         <Route path="/main" element={<MainPage />} />
         <Route path="/detail/:id" element={<DetailPage />} />
         <Route path="/list/recommendation" element={<RecommendListPage />} />
