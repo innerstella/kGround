@@ -32,14 +32,19 @@ const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
+        {/* 진입 화면 */}
+        {userLogin.isLogin ? (
+          <Route path="/" element={<MainPage />} />
+        ) : (
+          <Route path="/" element={<StartPage />} />
+        )}
+
         {/* 회원가입 */}
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/termsofuse" element={<TermsOfUsePage />} />
         <Route path="/termsofdata" element={<TermsOfDataPage />} />
 
         {/* 비로그인 접근 가능 */}
-        {/* <Route path="/" element={<StartPage />} /> */}
-        <Route path="/" element={<MainPage />} />
         <Route path="/main" element={<MainPage />} />
         <Route path="/detail/:id" element={<DetailPage />} />
         <Route path="/list/recommendation" element={<RecommendListPage />} />
