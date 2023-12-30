@@ -11,13 +11,18 @@ export const StartContainer = styled.div`
   flex-direction: column;
 
   padding: 13rem 2.5rem 0rem 2.5rem;
+
+  .logo {
+    width: 60vw;
+    margin-bottom: 20vh;
+  }
 `;
 
 export const Subtitle = styled.p`
   color: #0e1513;
   text-align: center;
   font-family: Pretendard;
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-style: normal;
   font-weight: 500;
   line-height: normal;

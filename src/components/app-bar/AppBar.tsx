@@ -47,6 +47,6 @@ const MainWrapper = styled.div`
     height: 1.5rem;
   }
   .logo {
-    width: 10rem;
+    width: 7rem;
   }
 `;
