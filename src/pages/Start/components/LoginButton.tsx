@@ -3,6 +3,7 @@ import { useRecoilState } from "recoil";
 import { doc, getDoc } from "firebase/firestore";
 
 import * as S from "./LoginButton.style";
+import * as auth from "firebase/auth";
 import { dbService, signInGoogle } from "../../../firebase";
 import { UserData, userLoginState, userState } from "../../../recoil/user";
 
@@ -23,16 +24,20 @@ const LoginButton = ({ type }: LoginButtonProps) => {
   };
 
   const signIn = async () => {
-    signInGoogle().then((res: any) => {
-      console.log(res);
-      if (res.user) {
-        setUserLogin({ isLogin: true, uid: res.user?.uid });
-      }
+    const authentication = auth.getAuth();
 
-      // userData 있는지 확인
-      const docRef = doc(dbService, "userData", res.user?.uid);
-      getDoc(docRef)
-        .then((docSnapshot) => {
+    try {
+      await signInGoogle();
+
+      auth.onAuthStateChanged(authentication, async (user) => {
+        if (user) {
+          // 사용자 정보 가져오기 또는 로그인 처리
+          setUserLogin({ isLogin: true, uid: user.uid });
+
+          // userData 있는지 확인
+          const docRef = doc(dbService, "userData", user.uid);
+          const docSnapshot = await getDoc(docRef);
+
           if (docSnapshot.exists()) {
             const data = docSnapshot.data();
             setUserData(data as UserData);
@@ -45,21 +50,18 @@ const LoginButton = ({ type }: LoginButtonProps) => {
                 userWishList: data.userWishList,
                 userReviewList: data.userReviewList,
               };
-              setUserData(loadData);
 
-              // 로그인
-              // navigate("/main");
+              setUserData(loadData);
             }
           } else {
             // 회원가입
-            navigate("/signup", { state: { uid: res.user?.uid } });
+            navigate("/signup", { state: { uid: user.uid } });
           }
-        })
-        .catch((error) => {
-          console.error("Error getting document:", error);
-          throw error; // Throw the error to be caught by the calling code
-        });
-    });
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <S.LoginWrapper>

@@ -24,47 +24,34 @@ export const fbase = firebase.initializeApp(firebaseConfig);
 export const authService = auth.getAuth(fbase);
 
 // google auth
-export const signInGoogle = () => {
-  const provider = new GoogleAuthProvider();
+export const signInGoogle = async () => {
+  try {
+    const provider = new GoogleAuthProvider();
+    const authentication = auth.getAuth();
 
-  const authentication = auth.getAuth();
-  auth.signInWithRedirect(authentication, provider);
+    auth.signInWithRedirect(authentication, provider);
 
-  return auth
-    .getRedirectResult(authentication)
-    .then((result) => {
-      return result;
-    })
-    .catch((error) => {
-      return error;
-    });
+    await auth.setPersistence(authentication, auth.browserSessionPersistence);
 
-  // return auth
-  //   .setPersistence(authService, auth.browserSessionPersistence)
-  //   .then(() => {
-  //     return auth
-  //       .signInWithRedirect(authService, provider)
-  //       .then((res) => {
-  //         return res;
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   });
-
-  // return auth
-  //   .setPersistence(authService, auth.browserSessionPersistence)
-  //   .then(() => {
-  //     return auth
-  //       .signInWithPopup(authService, provider)
-  //       .then((res) => {
-  //         return res;
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   });
+    const result = await auth.getRedirectResult(authentication);
+    return result; // 이 부분은 비동기 작업이 완료된 후에 실행됩니다.
+  } catch (error) {
+    console.error("Error during Google sign-in:", error);
+    throw error;
+  }
 };
+// return auth
+//   .setPersistence(authService, auth.browserSessionPersistence)
+//   .then(() => {
+//     return auth
+//       .signInWithPopup(authService, provider)
+//       .then((res) => {
+//         return res;
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//       });
+//   });
 
 // db
 export const dbService = getFirestore(fbase);
