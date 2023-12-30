@@ -10,6 +10,14 @@ export const MainWrapper = styled.div`
 
   margin-top: 5.38rem;
   padding: 0 1.25rem 3rem 1.25rem;
+
+  .name-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    width: 100%;
+  }
 `;
 
 export const NameWrapper = styled.div`

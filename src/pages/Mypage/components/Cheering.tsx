@@ -2,13 +2,22 @@ import styled from "styled-components";
 
 const Cheering = ({ text }: { text: string }) => {
   return (
-    <MainWrapper>
-      <p className="text">{text}</p>
-    </MainWrapper>
+    <Container>
+      <MainWrapper>
+        <p className="text">{text}</p>
+      </MainWrapper>
+    </Container>
   );
 };
 
 export default Cheering;
+
+export const Container = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+`;
 
 const MainWrapper = styled.div`
   display: flex;
