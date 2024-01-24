@@ -24,7 +24,7 @@ const Banner = () => {
             <img
               onClick={() =>
                 window.open(
-                  "http://a23157179.10pages.co.kr/board/list?bd_id=news"
+                  "https://a23157179.10pages.co.kr/board/list?bd_id=news"
                 )
               }
               className="banner"
