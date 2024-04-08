@@ -9,7 +9,7 @@ const BackBar = () => {
         className="ic"
         src="/assets/icon/ic-back.svg"
         alt="back"
-        onClick={() => navigte(-1)}
+        onClick={() => navigte("/main")}
       />
     </MainWrapper>
   );
@@ -25,8 +25,6 @@ const MainWrapper = styled.div`
   height: 4rem;
   background-color: white;
 
-  /* padding: 0 1rem; */
-
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -36,6 +34,8 @@ const MainWrapper = styled.div`
   top: 0;
   z-index: 100;
   .ic {
+    cursor: pointer;
+
     width: 1.5rem;
     height: 1.5rem;
   }
