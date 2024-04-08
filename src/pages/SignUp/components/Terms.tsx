@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components";
-import CheckBox from "./CheckBox";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+
+import CheckBox from "./CheckBox";
 
 const Terms = () => {
   const navigate = useNavigate();

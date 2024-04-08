@@ -1,6 +1,4 @@
 import { useDisclosure, useToast } from "@chakra-ui/react";
-import styled from "styled-components";
-
 import {
   Modal,
   ModalOverlay,
@@ -10,6 +8,8 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 import { useLocation } from "react-router-dom";
+import styled from "styled-components";
+
 import shareUrl from "../../../utils/shareUrl";
 
 const ShareButton = () => {

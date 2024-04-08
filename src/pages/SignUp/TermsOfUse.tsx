@@ -1,5 +1,5 @@
-import AppBar from "../../components/app-bar/AppBar";
 import * as S from "./TermsOf.style";
+import AppBar from "../../components/app-bar/AppBar";
 
 const TermsOfUsePage = () => {
   const url = "https://kground.web.app/";

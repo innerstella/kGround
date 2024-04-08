@@ -1,15 +1,14 @@
 import { useEffect } from "react";
-import styled from "styled-components";
-import { useRecoilState, useRecoilValue } from "recoil";
-
-import LoginButton from "../../Start/components/LoginButton";
-import GNB from "../../../components/gnb/GNB";
-import AppBar from "../../../components/app-bar/AppBar";
-
-import { mountainState } from "../../../recoil/mountain";
-import loadMountainData from "../../../utils/load/loadMountainData";
-import { userLoginState, userState } from "../../../recoil/user";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState, useRecoilValue } from "recoil";
+import styled from "styled-components";
+
+import AppBar from "../../../components/app-bar/AppBar";
+import GNB from "../../../components/gnb/GNB";
+import { mountainState } from "../../../recoil/mountain";
+import { userLoginState, userState } from "../../../recoil/user";
+import loadMountainData from "../../../utils/load/loadMountainData";
+import LoginButton from "../../Start/components/LoginButton";
 
 const NonLoginPage = () => {
   const [mountainData, setMountainData] = useRecoilState(mountainState);

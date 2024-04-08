@@ -1,13 +1,14 @@
-import { useLocation, useParams } from "react-router-dom";
-import * as S from "./Detail.style";
-import AppBar from "../../components/app-bar/AppBar";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+
 import Diner from "./components/Diner";
+import ReviewButton from "./components/ReviewButton";
 import ShareButton from "./components/ShareButton";
 import WishButton from "./components/WishButton";
-import { useRecoilValue } from "recoil";
+import * as S from "./Detail.style";
+import AppBar from "../../components/app-bar/AppBar";
 import { MountainData, mountainState } from "../../recoil/mountain";
-import { useEffect, useState } from "react";
-import ReviewButton from "./components/ReviewButton";
 
 const DetailPage = () => {
   const mountainData = useRecoilValue(mountainState);

@@ -1,4 +1,5 @@
 import { collection, getDocs } from "firebase/firestore";
+
 import { dbService } from "../../firebase";
 
 const loadMountainData = async () => {

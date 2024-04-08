@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import ChipButton from "../../../components/subway-button/ChipButton";
+
 import * as S from "./Top3.style";
+import ChipButton from "../../../components/subway-button/ChipButton";
 import { MountainData } from "../../../recoil/mountain";
 
 interface Props {

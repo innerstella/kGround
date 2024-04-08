@@ -1,18 +1,17 @@
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
-import * as S from "./Result.style";
-
-import Loading from "./components/Loading";
-import Bubble from "./components/Bubble";
-
-import AppBar from "../../components/app-bar/AppBar";
-import WideButton from "../../components/wide-button/WideButton";
-import GNB from "../../components/gnb/GNB";
 import { useRecoilValue } from "recoil";
-import { MountainData, mountainState } from "../../recoil/mountain";
+
+import Bubble from "./components/Bubble";
 import CardSection from "./components/Card";
+import Loading from "./components/Loading";
+import * as S from "./Result.style";
+import AppBar from "../../components/app-bar/AppBar";
+import GNB from "../../components/gnb/GNB";
+import WideButton from "../../components/wide-button/WideButton";
 import keywordData from "../../data/keyword-id.json";
+import { MountainData, mountainState } from "../../recoil/mountain";
 
 const ResultPage = () => {
   const navigate = useNavigate();

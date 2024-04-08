@@ -1,20 +1,19 @@
-import { useRecoilValue } from "recoil";
-import AppBar from "../../components/app-bar/AppBar";
-import * as A from "./ReviewList.style";
-import { userState } from "../../recoil/user";
-import GNB from "../../components/gnb/GNB";
-import { mountainState } from "../../recoil/mountain";
 import { doc, getDoc } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+
+import ReviewListCard from "./components/ReviewListCard";
+import * as A from "./ReviewList.style";
+import AppBar from "../../components/app-bar/AppBar";
+import GNB from "../../components/gnb/GNB";
 import { dbService } from "../../firebase";
 import { ReviewData } from "../../recoil/review";
-import { useEffect, useState } from "react";
-import ReviewListCard from "./components/ReviewListCard";
+import { userState } from "../../recoil/user";
 import Loading from "../Keyword/components/Loading";
-import { useNavigate } from "react-router-dom";
 
 const ReviewListPage = () => {
   const userData = useRecoilValue(userState);
-  const mountainData = useRecoilValue(mountainState);
   const navigate = useNavigate();
 
   const [userReviewList, setUserReviewList] = useState<ReviewData[]>([]);

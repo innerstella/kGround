@@ -1,5 +1,4 @@
 import * as S from "./MainComponents.style";
-
 import CircleButton from "../../../components/circle-button/CircleButton";
 import RestaurantButton from "../../../components/restaurant-button/RestaurantButton";
 

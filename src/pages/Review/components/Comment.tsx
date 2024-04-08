@@ -1,7 +1,8 @@
+import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
+
 import { reviewState } from "../../../recoil/review";
-import { useEffect, useState } from "react";
 
 const Comment = () => {
   const [reviewData, setReviewData] = useRecoilState(reviewState);

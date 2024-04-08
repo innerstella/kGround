@@ -1,21 +1,18 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { DocumentData, doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 
 import * as S from "./ReviewFinish.style";
-
 import AppBar from "../../components/app-bar/AppBar";
 import GNB from "../../components/gnb/GNB";
-import WideButton from "../../components/wide-button/WideButton";
-import Loading from "../Keyword/components/Loading";
 import TagButton from "../../components/tag-button/TagButton";
-
-import { DocumentData, doc, getDoc } from "firebase/firestore";
-import { dbService } from "../../firebase";
+import WideButton from "../../components/wide-button/WideButton";
 import reviewJson from "../../data/review.json";
-
+import { dbService } from "../../firebase";
 import { mountainState } from "../../recoil/mountain";
 import { UserData, userLoginState, userState } from "../../recoil/user";
+import Loading from "../Keyword/components/Loading";
 
 const ReivewFinishPage = () => {
   const location = useLocation();

@@ -1,12 +1,12 @@
-import { useRecoilValue } from "recoil";
-import AppBar from "../../../components/app-bar/AppBar";
-import Top3 from "../components/Top3";
-import * as S from "./Subway.style";
-import { subwayState } from "../../../recoil/mountain";
-import RectangleBox from "../components/RectangleBox";
-import WideButton from "../../../components/wide-button/WideButton";
 import { useState } from "react";
+import { useRecoilValue } from "recoil";
+
+import * as S from "./Subway.style";
+import AppBar from "../../../components/app-bar/AppBar";
+import WideButton from "../../../components/wide-button/WideButton";
+import { subwayState } from "../../../recoil/mountain";
 import SubwayListButton from "../components/SubwayListButton";
+import Top3 from "../components/Top3";
 
 const SubwayListPage = () => {
   const subwayData = useRecoilValue(subwayState);

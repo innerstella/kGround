@@ -1,9 +1,10 @@
 import { useRecoilValue } from "recoil";
-import AppBar from "../../components/app-bar/AppBar";
-import * as S from "./WishListPage.style";
-import { userState } from "../../recoil/user";
+
 import WishList from "./components/WishList";
+import * as S from "./WishListPage.style";
+import AppBar from "../../components/app-bar/AppBar";
 import GNB from "../../components/gnb/GNB";
+import { userState } from "../../recoil/user";
 
 const WishListPage = () => {
   const userData = useRecoilValue(userState);

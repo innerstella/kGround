@@ -1,6 +1,7 @@
-import { useState } from "react";
-import * as S from "./Create.style";
 import { doc, setDoc } from "firebase/firestore";
+import { useState } from "react";
+
+import * as S from "./Create.style";
 import { dbService } from "../firebase";
 
 const CreatePage = () => {

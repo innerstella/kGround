@@ -1,7 +1,8 @@
+import { useState } from "react";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
+
 import KeywordButton from "../../../components/keyword-button/KeywordButton";
-import { useEffect, useState } from "react";
-import { useRecoilState, useResetRecoilState } from "recoil";
 import { ReviewData, reviewState } from "../../../recoil/review";
 
 interface Props {

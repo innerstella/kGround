@@ -1,8 +1,9 @@
-import { useRecoilValue } from "recoil";
-import { MountainData, mountainState } from "../../../recoil/mountain";
 import { useEffect, useState } from "react";
-import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import styled from "styled-components";
+
+import { MountainData, mountainState } from "../../../recoil/mountain";
 
 interface RectangleBoxProps {
   name: string;

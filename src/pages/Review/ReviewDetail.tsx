@@ -1,14 +1,15 @@
+import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+
+import ShowStar from "./components/ShowStar";
 import * as S from "./ReviewDetail.style";
 import AppBar from "../../components/app-bar/AppBar";
 import GNB from "../../components/gnb/GNB";
-import { useRecoilValue } from "recoil";
+import TagButton from "../../components/tag-button/TagButton";
+import reviewJson from "../../data/review.json";
 import { mountainState } from "../../recoil/mountain";
 import getDateString from "../../utils/getDateString";
-import { useEffect, useState } from "react";
-import reviewJson from "../../data/review.json";
-import ShowStar from "./components/ShowStar";
-import TagButton from "../../components/tag-button/TagButton";
 
 const ReviewDetailPage = () => {
   const location = useLocation();

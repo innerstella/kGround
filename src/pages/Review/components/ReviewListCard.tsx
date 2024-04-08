@@ -1,13 +1,13 @@
-import styled from "styled-components";
-import { ReviewData } from "../../../recoil/review";
+import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
-import { mountainState } from "../../../recoil/mountain";
-import getDateString from "../../../utils/getDateString";
+import styled from "styled-components";
+
 import TagButton from "../../../components/tag-button/TagButton";
 import reviewJson from "../../../data/review.json";
-import { useEffect, useState } from "react";
+import { mountainState } from "../../../recoil/mountain";
+import { ReviewData } from "../../../recoil/review";
+import getDateString from "../../../utils/getDateString";
 import ShowStar from "../components/ShowStar";
-import { useNavigate } from "react-router-dom";
 
 interface ReviewListCardProps {
   reviewData: ReviewData;

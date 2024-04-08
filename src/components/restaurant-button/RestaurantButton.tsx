@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import { Skeleton } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
+import styled from "styled-components";
 
 import { mountainState } from "../../recoil/mountain";
-import { useEffect, useState } from "react";
-import { Skeleton } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
 
 interface Props {
   mountainName: string;
