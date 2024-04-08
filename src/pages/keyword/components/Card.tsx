@@ -1,9 +1,9 @@
-import styled from "styled-components";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 import keywordData from "../../../data/keyword-id.json";
 import { MountainData } from "../../../recoil/mountain";
-import { useNavigate } from "react-router-dom";
 
 interface CardProps {
   data: MountainData;
@@ -23,8 +23,6 @@ const CardSection = ({ data }: CardProps) => {
     keywordList += tag;
     keywordList += " ";
   });
-
-  console.log(data.name);
 
   return (
     <MainWrapper onClick={() => navigate(`/detail/${data.name}`)}>
