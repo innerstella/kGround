@@ -93,7 +93,8 @@ const SignUpPage = () => {
     <S.MainWrapper>
       <BackBar />
       <p className="h1">회원가입하기</p>
-      <S.InputWrapper>
+      <span>준비중</span>
+      {/* <S.InputWrapper>
         <div className="input">
           <p className="body1">닉네임</p>
           <Input
@@ -130,7 +131,7 @@ const SignUpPage = () => {
           <Terms />
         </div>
       </S.InputWrapper>
-      <WideButton text="산책하러가기" type="fill" onClick={signUp} />
+      <WideButton text="산책하러가기" type="fill" onClick={signUp} /> */}
     </S.MainWrapper>
   );
 };
