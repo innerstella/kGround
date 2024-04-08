@@ -1,9 +1,9 @@
+import * as auth from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { doc, getDoc } from "firebase/firestore";
 
 import * as S from "./LoginButton.style";
-import * as auth from "firebase/auth";
 import { dbService, signInGoogle } from "../../../firebase";
 import { UserData, userLoginState, userState } from "../../../recoil/user";
 

@@ -1,10 +1,9 @@
 import { useEffect } from "react";
 import { useResetRecoilState } from "recoil";
 
-import { userLoginState, userState } from "../../recoil/user";
-
-import * as S from "./Start.style";
 import LoginButton from "./components/LoginButton";
+import * as S from "./Start.style";
+import { userLoginState, userState } from "../../recoil/user";
 
 const StartPage = () => {
   const userData = useResetRecoilState(userState);
