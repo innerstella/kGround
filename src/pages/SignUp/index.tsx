@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
-import WideButton from "../../components/wide-button/WideButton";
-import * as S from "./SignUp.style";
-
-import { IconButton, Input, Select, useToast } from "@chakra-ui/react";
+import { Input, Select, useToast } from "@chakra-ui/react";
 import { doc, setDoc } from "firebase/firestore";
-import { dbService } from "../../firebase";
-import BackBar from "./components/BackBar";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+
+import BackBar from "./components/BackBar";
 import Terms from "./components/Terms";
-import { useRecoilState, useRecoilValue } from "recoil";
+import * as S from "./SignUp.style";
+import WideButton from "../../components/wide-button/WideButton";
+import { dbService } from "../../firebase";
 import { userLoginState, userState } from "../../recoil/user";
 
 const SignUpPage = () => {
