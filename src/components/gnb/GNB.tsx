@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
+
 import * as S from "./GNB.style";
-import { useRecoilValue } from "recoil";
-import { userLoginState } from "../../recoil/user";
 
 interface Props {
   page: "home" | "search" | "mypage";

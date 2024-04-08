@@ -32,6 +32,8 @@ interface SectionProps {
 const getButtonColor = ($page: boolean) => ($page ? "#35b711" : "none");
 
 export const Section = styled.div<SectionProps>`
+  cursor: pointer;
+
   border-top: 4px solid ${({ $page }) => getButtonColor($page)};
   height: 100%;
   width: 20%;
