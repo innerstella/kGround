@@ -1,15 +1,13 @@
-import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
-
-import * as S from "./Keyword.style";
+import { useNavigate } from "react-router-dom";
 
 import Bubble from "./components/Bubble";
-import KeywordButton from "../../components/keyword-button/KeywordButton";
-
-import keywordData from "../../data/keyword-id.json";
+import * as S from "./Keyword.style";
 import AppBar from "../../components/app-bar/AppBar";
 import GNB from "../../components/gnb/GNB";
+import KeywordButton from "../../components/keyword-button/KeywordButton";
 import WideButton from "../../components/wide-button/WideButton";
+import keywordData from "../../data/keyword-id.json";
 
 const KeywordPage = () => {
   const navigate = useNavigate();

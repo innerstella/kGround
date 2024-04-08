@@ -17,6 +17,8 @@ const WideButton = ({ text, onClick, type }: Props) => {
 export default WideButton;
 
 const MainWrapper = styled.div<{ type: string }>`
+  cursor: pointer;
+
   display: inline-flex;
   padding: 0.875rem 6.3125rem;
   justify-content: center;
