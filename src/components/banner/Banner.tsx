@@ -1,10 +1,10 @@
-import { Swiper, SwiperSlide } from "swiper/react";
+import { styled } from "styled-components";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { styled } from "styled-components";
 
 const Banner = () => {
   const bannerSettings = {
@@ -43,6 +43,7 @@ export default Banner;
 const BannerContainer = styled.div`
   margin: 1rem 0;
   width: 100%;
+  cursor: pointer;
 
   .banner {
     width: 340px;

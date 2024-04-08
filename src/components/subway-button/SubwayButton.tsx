@@ -1,9 +1,10 @@
+import { Skeleton } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
+
 import { mountainState } from "../../recoil/mountain";
-import { useEffect, useState } from "react";
-import { Skeleton } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
 
 interface Props {
   type: "first" | "second";
@@ -105,6 +106,7 @@ const SubwayButton = ({ type, mountainName }: Props) => {
 export default SubwayButton;
 
 const FirstWapper = styled.div`
+  cursor: pointer;
   .skleton {
     width: 6rem;
     height: 6rem;
@@ -175,6 +177,8 @@ const FirstWapper = styled.div`
 `;
 
 const SecondWrapper = styled.div`
+  cursor: pointer;
+
   display: flex;
   width: 7.5625rem;
   padding: 1rem 0.75rem;

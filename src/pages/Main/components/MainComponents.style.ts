@@ -67,6 +67,9 @@ export const Text = styled.div`
     white-space: pre-wrap;
     padding-top: 0.1rem;
   }
+  .button {
+    cursor: pointer;
+  }
 `;
 
 export const ButtonWrapper = styled.div`
@@ -77,6 +80,10 @@ export const ButtonWrapper = styled.div`
   align-items: center;
 
   overflow-x: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   .gap {
     display: flex;
