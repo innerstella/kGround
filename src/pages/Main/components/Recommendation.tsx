@@ -21,11 +21,21 @@ const Recommendation = () => {
 
   useEffect(() => {
     const docRef = collection(dbService, "recommendationData");
+    const today = new Date();
+    const month =
+      today.getMonth() + 1 < 10
+        ? `0${today.getMonth() + 1}`
+        : today.getMonth() + 1;
+    const year = today.getFullYear();
+    const version = `${year.toString().slice(2)}${month}`;
+
     getDocs(docRef)
       .then((querySnapshot) => {
         let data: any[] = [];
         querySnapshot.forEach((doc) => {
-          data.push(doc.data());
+          if (doc.data().version === version) {
+            data.push(doc.data());
+          }
         });
 
         setRecommendationData(data);
