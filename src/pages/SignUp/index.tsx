@@ -8,6 +8,8 @@ import { dbService } from "../../firebase";
 import BackBar from "./components/BackBar";
 import { useLocation, useNavigate } from "react-router-dom";
 import Terms from "./components/Terms";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { userLoginState, userState } from "../../recoil/user";
 
 const SignUpPage = () => {
   const toast = useToast();
@@ -17,12 +19,19 @@ const SignUpPage = () => {
   const [gender, setGender] = useState<number>(0);
   const [birth, setBirth] = useState<string>("");
   const [uid, setUid] = useState<string>("");
+  const userData = useRecoilValue(userState);
+  const userLoginData = useRecoilValue(userLoginState);
 
   useEffect(() => {
-    if (location.state === null) {
-      navigate("/");
+    // if (location.state === null) {
+    //   navigate("/");
+    // } else {
+    //   setUid(location.state.uid);
+    // }
+    if (userData && userData.userName !== "" && location.state === null) {
+      navigate("/main");
     } else {
-      setUid(location.state.uid);
+      setUid(userLoginData.uid);
     }
   }, []);
 

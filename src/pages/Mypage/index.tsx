@@ -40,6 +40,13 @@ const MyPage = () => {
     const reviewList = data.userReviewList;
     let totalHeight = 0;
 
+    // 신규 가입 예외 처리
+    if (reviewList.length === 0) {
+      setMountainElev(0);
+      setElevLoaded(true);
+      return;
+    }
+
     setMountainCnt(reviewList.length);
 
     reviewList.forEach(async (elem) => {
@@ -61,7 +68,11 @@ const MyPage = () => {
 
   // func : 유저 데이터 로드
   useEffect(() => {
-    if (!userLoginData.isLogin) return;
+    console.log(userLoginData);
+    if (!userLoginData.isLogin) {
+      navigate("/signup");
+      return;
+    }
 
     const uid = userLoginData.uid;
 
@@ -73,6 +84,8 @@ const MyPage = () => {
       });
     });
   }, [setUserData, userLoginData.isLogin, userLoginData.uid]);
+
+  console.log("dlddd");
 
   return (
     <S.MainWrapper>
