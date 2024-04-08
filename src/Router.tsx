@@ -1,33 +1,28 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 
-import { userLoginState, userState } from "./recoil/user";
-
-import StartPage from "./pages/Start";
-import MainPage from "./pages/Main";
-import DetailPage from "./pages/Detail";
 import CreatePage from "./admin/Create";
+import DetailPage from "./pages/Detail";
+import KeywordPage from "./pages/Keyword";
+import ResultPage from "./pages/Keyword/Result";
 import RecommendListPage from "./pages/List/RecommendList";
 import SubwayListPage from "./pages/List/SubwayList";
-import KeywordPage from "./pages/Keyword";
+import MainPage from "./pages/Main";
 import MyPage from "./pages/Mypage";
-import SignUpPage from "./pages/SignUp";
 import WishListPage from "./pages/Mypage/WishListPage";
-import TermsOfUsePage from "./pages/SignUp/TermsOfUse";
-import TermsOfDataPage from "./pages/SignUp/TermsOfData";
-import ResultPage from "./pages/Keyword/Result";
-import ReviewWritePage from "./pages/Review/ReviewWritePage";
-import ReviewListPage from "./pages/Review/ReviewListPage";
-import ReivewFinishPage from "./pages/Review/ReviewFinish";
 import ReviewDetailPage from "./pages/Review/ReviewDetail";
+import ReivewFinishPage from "./pages/Review/ReviewFinish";
+import ReviewListPage from "./pages/Review/ReviewListPage";
+import ReviewWritePage from "./pages/Review/ReviewWritePage";
+import SignUpPage from "./pages/SignUp";
+import TermsOfDataPage from "./pages/SignUp/TermsOfData";
+import TermsOfUsePage from "./pages/SignUp/TermsOfUse";
+import StartPage from "./pages/Start";
 import PrivateRouter from "./PrivateRouter";
+import { userLoginState } from "./recoil/user";
 
 const AppRouter = () => {
-  // recoil 상태값 확인
   const userLogin = useRecoilValue(userLoginState);
-  const userData = useRecoilValue(userState);
-  console.log("userData", userData);
-  console.log("userLogin", userLogin);
 
   return (
     <BrowserRouter>

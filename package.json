@@ -15,6 +15,7 @@
     "@types/react-dom": "^18.2.14",
     "@types/xml-parser": "^1.2.33",
     "axios": "^1.6.2",
+    "eslint-plugin-import": "^2.29.1",
     "firebase": "^10.5.2",
     "framer-motion": "^10.16.4",
     "react": "^18.2.0",

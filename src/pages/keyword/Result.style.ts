@@ -11,6 +11,8 @@ export const MainWrapper = styled.div`
   margin-bottom: 10rem;
   padding: 0 1.25rem 3rem 1.25rem;
 
+  cursor: pointer;
+
   .fixed-bottom {
     position: fixed;
     bottom: 20vh;

@@ -44,6 +44,8 @@ export const TagWrapper = styled.div`
 `;
 
 export const TextWrapper = styled.div`
+  cursor: pointer;
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -79,6 +81,8 @@ export const MoreWrapper = styled.div`
   padding: 0.1rem;
   width: 3.25rem;
   margin-top: 1.5rem;
+
+  cursor: pointer;
   .text {
     color: rgba(255, 255, 255, 0.62);
     text-align: center;

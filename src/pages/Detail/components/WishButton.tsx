@@ -28,6 +28,17 @@ const WishButton = ({ mountainName }: Props) => {
   }, [mountainName, userData.userWishList, userWishList]);
 
   const clickWish = () => {
+    // 비로그인 예외 처리
+    if (!loginState.isLogin) {
+      toast({
+        title: "로그인 후 이용해주세요!",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
+      return;
+    }
+
     const data = { ...userData };
     if (userWishList.includes(mountainName)) {
       // db에 있으면 => db에서 삭제 & 기본 하트 변경

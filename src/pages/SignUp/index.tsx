@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
-import WideButton from "../../components/wide-button/WideButton";
-import * as S from "./SignUp.style";
-
-import { IconButton, Input, Select, useToast } from "@chakra-ui/react";
+import { Input, Select, useToast } from "@chakra-ui/react";
 import { doc, setDoc } from "firebase/firestore";
-import { dbService } from "../../firebase";
-import BackBar from "./components/BackBar";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+
+import BackBar from "./components/BackBar";
 import Terms from "./components/Terms";
+import * as S from "./SignUp.style";
+import WideButton from "../../components/wide-button/WideButton";
+import { dbService } from "../../firebase";
+import { userLoginState, userState } from "../../recoil/user";
 
 const SignUpPage = () => {
   const toast = useToast();
@@ -17,12 +19,19 @@ const SignUpPage = () => {
   const [gender, setGender] = useState<number>(0);
   const [birth, setBirth] = useState<string>("");
   const [uid, setUid] = useState<string>("");
+  const userData = useRecoilValue(userState);
+  const userLoginData = useRecoilValue(userLoginState);
 
   useEffect(() => {
-    if (location.state === null) {
-      navigate("/");
+    // if (location.state === null) {
+    //   navigate("/");
+    // } else {
+    //   setUid(location.state.uid);
+    // }
+    if (userData && userData.userName !== "" && location.state === null) {
+      navigate("/main");
     } else {
-      setUid(location.state.uid);
+      setUid(userLoginData.uid);
     }
   }, []);
 
@@ -84,7 +93,8 @@ const SignUpPage = () => {
     <S.MainWrapper>
       <BackBar />
       <p className="h1">회원가입하기</p>
-      <S.InputWrapper>
+      <span>준비중</span>
+      {/* <S.InputWrapper>
         <div className="input">
           <p className="body1">닉네임</p>
           <Input
@@ -121,7 +131,7 @@ const SignUpPage = () => {
           <Terms />
         </div>
       </S.InputWrapper>
-      <WideButton text="산책하러가기" type="fill" onClick={signUp} />
+      <WideButton text="산책하러가기" type="fill" onClick={signUp} /> */}
     </S.MainWrapper>
   );
 };

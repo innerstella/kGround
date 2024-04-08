@@ -5,13 +5,13 @@ const Info = () => {
   const navigate = useNavigate();
   return (
     <MainWrapper>
-      <p className="title">앱 정보</p>
-      <p className="text" onClick={() => navigate("/termsofuse")}>
+      <span className="title">앱 정보</span>
+      <span className="text" onClick={() => navigate("/termsofuse")}>
         이용 약관
-      </p>
-      <p className="text" onClick={() => navigate("/termsofdata")}>
+      </span>
+      <span className="text" onClick={() => navigate("/termsofdata")}>
         개인정보 처리방침
-      </p>
+      </span>
     </MainWrapper>
   );
 };
@@ -43,6 +43,7 @@ const MainWrapper = styled.div`
     white-space: nowrap;
   }
   .text {
+    cursor: pointer;
     color: var(--Text-Sub, #545454);
 
     /* Body2 */

@@ -1,12 +1,11 @@
 import { useEffect } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 
-import * as S from "./Main.style";
-import GNB from "../../components/gnb/GNB";
 import Recommendation from "./components/Recommendation";
 import Subway from "./components/Subway";
+import * as S from "./Main.style";
 import Banner from "../../components/banner/Banner";
-
+import GNB from "../../components/gnb/GNB";
 import { mountainState } from "../../recoil/mountain";
 import loadMountainData from "../../utils/load/loadMountainData";
 

@@ -1,24 +1,21 @@
+import { Skeleton } from "@chakra-ui/react";
+import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState, useRecoilValue } from "recoil";
 
+import Cheering from "./components/Cheering";
+import NonLoginPage from "./components/NonLogin";
 import * as S from "./Mypage.style";
-
 import AppBar from "../../components/app-bar/AppBar";
 import GNB from "../../components/gnb/GNB";
 import WideButton from "../../components/wide-button/WideButton";
-import Cheering from "./components/Cheering";
-import Info from "../Review/components/Info";
-import NonLoginPage from "./components/NonLogin";
-import Loading from "../Keyword/components/Loading";
-
-import { doc, getDoc } from "firebase/firestore";
 import { dbService } from "../../firebase";
-import { UserData, userLoginState, userState } from "../../recoil/user";
 import { mountainState } from "../../recoil/mountain";
+import { UserData, userLoginState, userState } from "../../recoil/user";
 import loadMountainData from "../../utils/load/loadMountainData";
 import loadUserData from "../../utils/load/loadUserData";
-import { Skeleton } from "@chakra-ui/react";
+import Info from "../Review/components/Info";
 
 const cheeringText = "등산하는 나, 제법 멋져요:)";
 
@@ -39,6 +36,13 @@ const MyPage = () => {
   const getMountainCount = (data: UserData) => {
     const reviewList = data.userReviewList;
     let totalHeight = 0;
+
+    // 신규 가입 예외 처리
+    if (reviewList.length === 0) {
+      setMountainElev(0);
+      setElevLoaded(true);
+      return;
+    }
 
     setMountainCnt(reviewList.length);
 
@@ -61,7 +65,10 @@ const MyPage = () => {
 
   // func : 유저 데이터 로드
   useEffect(() => {
-    if (!userLoginData.isLogin) return;
+    if (!userLoginData.isLogin) {
+      navigate("/signup");
+      return;
+    }
 
     const uid = userLoginData.uid;
 

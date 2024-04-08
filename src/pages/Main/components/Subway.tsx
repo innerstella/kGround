@@ -1,10 +1,10 @@
-import * as S from "./MainComponents.style";
-
-import SubwayButton from "../../../components/subway-button/SubwayButton";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { mountainState, subwayState } from "../../../recoil/mountain";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState, useRecoilValue } from "recoil";
+
+import * as S from "./MainComponents.style";
+import SubwayButton from "../../../components/subway-button/SubwayButton";
+import { mountainState, subwayState } from "../../../recoil/mountain";
 
 const Subway = () => {
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ const Subway = () => {
         <p className="sub1">지하철 역에서 가까운&nbsp;</p>
         <p className="sub2">산&nbsp;</p>
         <div
-          className="flex-row"
+          className="flex-row button"
           onClick={() => {
             navigate("/list/subway");
           }}

@@ -1,6 +1,6 @@
-import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import styled from "styled-components";
 
 type Elem = {
   id: number;
@@ -54,6 +54,8 @@ const KeywordButton = ({ elem, onClick, animation }: Props) => {
 export default KeywordButton;
 
 const Button = styled.div<{ isClicked: boolean }>`
+  cursor: pointer;
+
   border-radius: 10px;
   border: 2px solid var(--Default, #969696);
   background: ${(props) => {

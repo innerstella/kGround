@@ -1,15 +1,16 @@
+import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
+
+import * as S from "./Recommend.style";
 import AppBar from "../../../components/app-bar/AppBar";
 import {
   MountainData,
   mountainState,
   recommendationState,
 } from "../../../recoil/mountain";
-import * as S from "./Recommend.style";
-import { useEffect, useState } from "react";
-import RectangleBox from "../components/RectangleBox";
 import { monthState, weatherState } from "../../../recoil/system";
 import getTemperature from "../../../utils/getTemperature";
+import RectangleBox from "../components/RectangleBox";
 
 const RecommendListPage = () => {
   const monthData = useRecoilValue(monthState);

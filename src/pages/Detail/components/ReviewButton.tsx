@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
+import { userLoginState } from "../../../recoil/user";
+import { useToast } from "@chakra-ui/react";
 
 interface Props {
   mountainName: string;
@@ -8,14 +11,27 @@ interface Props {
 
 const ReviewButton = ({ mountainName, mountainImgUrl }: Props) => {
   const navigate = useNavigate();
+  const toast = useToast();
+  const loginState = useRecoilValue(userLoginState);
+
+  const writeReview = () => {
+    // 비로그인 예외 처리
+    if (!loginState.isLogin) {
+      toast({
+        title: "로그인 후 이용해주세요!",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
+      return;
+    }
+
+    navigate("/review/new", {
+      state: { mountainName: mountainName, mountainImgUrl: mountainImgUrl },
+    });
+  };
   return (
-    <MainWrapper
-      onClick={() =>
-        navigate("/review/new", {
-          state: { mountainName: mountainName, mountainImgUrl: mountainImgUrl },
-        })
-      }
-    >
+    <MainWrapper onClick={writeReview}>
       <p className="text">리뷰</p>
     </MainWrapper>
   );

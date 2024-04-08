@@ -32,6 +32,8 @@ interface SectionProps {
 const getButtonColor = ($page: boolean) => ($page ? "#35b711" : "none");
 
 export const Section = styled.div<SectionProps>`
+  cursor: pointer;
+
   border-top: 4px solid ${({ $page }) => getButtonColor($page)};
   height: 100%;
   width: 20%;
@@ -54,7 +56,7 @@ export const Section = styled.div<SectionProps>`
     text-align: center;
 
     /* Sub2 */
-    font-family: Pretendard;
+    font-family: Pretendard, sans-serif;
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 500;
@@ -64,7 +66,7 @@ export const Section = styled.div<SectionProps>`
     color: var(--Main-Color, var(--Main-Color, #043927));
 
     /* Sub2 */
-    font-family: Pretendard;
+    font-family: Pretendard, sans-serif;
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 500;

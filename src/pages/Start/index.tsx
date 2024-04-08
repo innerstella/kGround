@@ -1,19 +1,55 @@
+import * as auth from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 import { useEffect } from "react";
-import { useResetRecoilState } from "recoil";
+import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
 
-import { userLoginState, userState } from "../../recoil/user";
-
-import * as S from "./Start.style";
 import LoginButton from "./components/LoginButton";
+import * as S from "./Start.style";
+import { dbService } from "../../firebase";
+import { UserData, userLoginState, userState } from "../../recoil/user";
 
 const StartPage = () => {
-  const userData = useResetRecoilState(userState);
-  const loginData = useResetRecoilState(userLoginState);
+  const navigate = useNavigate();
+
+  const [userLogin, setUserLogin] = useRecoilState(userLoginState);
+  const [userData, setUserData] = useRecoilState(userState);
 
   useEffect(() => {
-    userData();
-    loginData();
-  }, [userData, loginData]);
+    const authentication = auth.getAuth();
+
+    auth.onAuthStateChanged(authentication, async (user) => {
+      if (user) {
+        // 사용자 정보 가져오기 또는 로그인 처리
+        setUserLogin({ isLogin: true, uid: user.uid });
+
+        // userData 있는지 확인
+        const docRef = doc(dbService, "userData", user.uid);
+        const docSnapshot = await getDoc(docRef);
+
+        if (docSnapshot.exists()) {
+          const data = docSnapshot.data();
+          setUserData(data as UserData);
+
+          if (data) {
+            const loadData: UserData = {
+              userName: data.userName,
+              userGender: data.userGender,
+              userBirth: data.userBirth,
+              userWishList: data.userWishList,
+              userReviewList: data.userReviewList,
+            };
+
+            setUserData(loadData);
+            navigate("/main");
+          }
+        } else {
+          // 회원가입
+          navigate("/signup", { state: { uid: user.uid } });
+        }
+      }
+    });
+  }, []);
 
   return (
     <S.StartContainer>

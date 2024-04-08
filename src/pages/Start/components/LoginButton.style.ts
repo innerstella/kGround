@@ -8,6 +8,8 @@ export const LoginWrapper = styled.div`
 `;
 
 export const Login = styled.div`
+  cursor: pointer;
+
   display: inline-flex;
   padding: 1rem 3.125rem;
   justify-content: center;
@@ -37,6 +39,8 @@ export const Login = styled.div`
 `;
 
 export const NonLogin = styled.div`
+  cursor: pointer;
+
   padding: 1.25rem 0.62rem 0.38rem 0.62rem;
 
   border-bottom: 1px solid var(--Line, #cecece);
