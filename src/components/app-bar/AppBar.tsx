@@ -43,6 +43,7 @@ const MainWrapper = styled.div`
   top: 0;
   z-index: 100;
   .ic {
+    cursor: pointer;
     width: 1.5rem;
     height: 1.5rem;
   }
