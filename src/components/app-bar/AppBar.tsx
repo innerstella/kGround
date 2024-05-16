@@ -16,7 +16,7 @@ const AppBar = () => {
         className="ic"
         src="/assets/icon/ic-home-off.svg"
         alt="home"
-        onClick={() => navigte("/main")}
+        onClick={() => navigte("/")}
       />
     </MainWrapper>
   );

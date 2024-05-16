@@ -50,6 +50,8 @@ const MainWrapper = styled.div`
   align-items: center;
   padding: 0.38rem;
 
+  cursor: pointer;
+
   .text {
     color: var(--Main-Color, #043927);
     font-family: Pretandard;

@@ -9,7 +9,7 @@ const BackBar = () => {
         className="ic"
         src="/assets/icon/ic-back.svg"
         alt="back"
-        onClick={() => navigte("/main")}
+        onClick={() => navigte("/")}
       />
     </MainWrapper>
   );

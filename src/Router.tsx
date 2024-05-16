@@ -28,11 +28,11 @@ const AppRouter = () => {
     <BrowserRouter>
       <Routes>
         {/* 진입 화면 */}
-        {userLogin.isLogin ? (
+        {/* {userLogin.isLogin ? (
           <Route path="/" element={<MainPage />} />
         ) : (
           <Route path="/" element={<StartPage />} />
-        )}
+        )} */}
 
         {/* 회원가입 */}
         <Route path="/signup" element={<SignUpPage />} />
@@ -40,7 +40,7 @@ const AppRouter = () => {
         <Route path="/termsofdata" element={<TermsOfDataPage />} />
 
         {/* 비로그인 접근 가능 */}
-        <Route path="/main" element={<MainPage />} />
+        <Route path="/" element={<MainPage />} />
         <Route path="/detail/:id" element={<DetailPage />} />
         <Route path="/list/recommendation" element={<RecommendListPage />} />
         <Route path="/list/subway" element={<SubwayListPage />} />

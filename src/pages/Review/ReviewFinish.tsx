@@ -175,7 +175,7 @@ const ReivewFinishPage = () => {
           <WideButton
             text="메인 화면으로 가기"
             type="fill"
-            onClick={() => navigate("/main")}
+            onClick={() => navigate("/")}
           />
         </>
       ) : (
