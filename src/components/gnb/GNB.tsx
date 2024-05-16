@@ -12,7 +12,7 @@ const GNB = ({ page }: Props) => {
   return (
     <S.MainWrapper>
       <S.WhiteWrapper>
-        <S.Section $page={page === "home"} onClick={() => navigate("/main")}>
+        <S.Section $page={page === "home"} onClick={() => navigate("/")}>
           {page === "home" ? (
             <>
               <img
