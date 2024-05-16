@@ -99,4 +99,6 @@ const MainWrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0.38rem;
+
+  cursor: pointer;
 `;
