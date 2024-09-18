@@ -1,67 +1,67 @@
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useRecoilValue } from "recoil";
+import { motion } from "framer-motion"
+import { useEffect, useState } from "react"
+import { useLocation, useNavigate } from "react-router-dom"
+import { useRecoilValue } from "recoil"
 
-import Bubble from "./components/Bubble";
-import CardSection from "./components/Card";
-import Loading from "./components/Loading";
-import * as S from "./Result.style";
-import AppBar from "../../components/app-bar/AppBar";
-import GNB from "../../components/gnb/GNB";
-import WideButton from "../../components/wide-button/WideButton";
-import keywordData from "../../data/keyword-id.json";
-import { MountainData, mountainState } from "../../recoil/mountain";
+import * as S from "./Result.style"
+import AppBar from "../../components/app-bar/AppBar"
+import GNB from "../../components/gnb/GNB"
+import WideButton from "../../components/wide-button/WideButton"
+import keywordData from "../../data/keyword-id.json"
+import { MountainData, mountainState } from "../../recoil/mountain"
+import Bubble from "./components/Bubble"
+import CardSection from "./components/Card"
+import Loading from "./components/Loading"
 
 const ResultPage = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const clickedList = location.state;
-  const [isLoaded, setIsLoaded] = useState(false);
+  const navigate = useNavigate()
+  const location = useLocation()
+  const clickedList = location.state
+  const [isLoaded, setIsLoaded] = useState(false)
 
   // 산 데이터 순회하면서 키워드 리스트에
   // clickedList의 원소가 하나라도 포함되면 출력
-  const mountainData = useRecoilValue(mountainState);
-  const [displayList, setDisplayList] = useState<MountainData[]>();
+  const mountainData = useRecoilValue(mountainState)
+  const [displayList, setDisplayList] = useState<MountainData[]>()
 
   useEffect(() => {
     const list = mountainData.filter((elem) => {
       if (elem.keywordList !== undefined) {
         const hasCommon = elem.keywordList.some((elem) =>
           clickedList.includes(+elem)
-        );
-        if (hasCommon) return elem;
+        )
+        if (hasCommon) return elem
       }
-    });
+    })
 
-    setDisplayList(list);
-  }, [mountainData, clickedList]);
+    setDisplayList(list)
+  }, [mountainData, clickedList])
 
   // keyword : id -> name
   type Keyword = {
-    [key: string]: string;
-  };
-  const keywordModifiedList: Keyword = keywordData;
-  const [keywordList, setKeywordList] = useState<string[]>();
+    [key: string]: string
+  }
+  const keywordModifiedList: Keyword = keywordData
+  const [keywordList, setKeywordList] = useState<string[]>()
 
   useEffect(() => {
     const transform = clickedList.map((key: number) => {
-      let tempStr = "";
-      const keyword = keywordModifiedList[key.toString()];
+      let tempStr = ""
+      const keyword = keywordModifiedList[key.toString()]
 
-      tempStr += keyword;
-      tempStr += " ";
+      tempStr += keyword
+      tempStr += " "
 
-      return tempStr;
-    });
+      return tempStr
+    })
 
-    setKeywordList(transform);
-  }, [clickedList, keywordModifiedList]);
+    setKeywordList(transform)
+  }, [clickedList, keywordModifiedList])
 
   // loading
   useEffect(() => {
-    setTimeout(() => setIsLoaded(true), 1500);
-  });
+    setTimeout(() => setIsLoaded(true), 1500)
+  })
 
   return (
     <S.MainWrapper>
@@ -71,7 +71,7 @@ const ResultPage = () => {
           <>
             <Bubble text={keywordList?.join("")} />
             {displayList.map((elem, idx) => {
-              return <CardSection data={elem} key={idx} />;
+              return <CardSection data={elem} key={idx} />
             })}
           </>
         ) : (
@@ -111,7 +111,7 @@ const ResultPage = () => {
 
       <GNB page="search" />
     </S.MainWrapper>
-  );
-};
+  )
+}
 
-export default ResultPage;
+export default ResultPage

@@ -1,29 +1,24 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useRecoilValue } from "recoil";
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 
-import CreatePage from "./admin/Create";
-import DetailPage from "./pages/Detail";
-import KeywordPage from "./pages/Keyword";
-import ResultPage from "./pages/Keyword/Result";
-import RecommendListPage from "./pages/List/RecommendList";
-import SubwayListPage from "./pages/List/SubwayList";
-import MainPage from "./pages/Main";
-import MyPage from "./pages/Mypage";
-import WishListPage from "./pages/Mypage/WishListPage";
-import ReviewDetailPage from "./pages/Review/ReviewDetail";
-import ReivewFinishPage from "./pages/Review/ReviewFinish";
-import ReviewListPage from "./pages/Review/ReviewListPage";
-import ReviewWritePage from "./pages/Review/ReviewWritePage";
-import SignUpPage from "./pages/SignUp";
-import TermsOfDataPage from "./pages/SignUp/TermsOfData";
-import TermsOfUsePage from "./pages/SignUp/TermsOfUse";
-import StartPage from "./pages/Start";
-import PrivateRouter from "./PrivateRouter";
-import { userLoginState } from "./recoil/user";
+import CreatePage from "./admin/Create"
+import DetailPage from "./pages/Detail"
+import RecommendListPage from "./pages/List/RecommendList"
+import SubwayListPage from "./pages/List/SubwayList"
+import MainPage from "./pages/Main"
+import MyPage from "./pages/Mypage"
+import WishListPage from "./pages/Mypage/WishListPage"
+import ReviewDetailPage from "./pages/Review/ReviewDetail"
+import ReivewFinishPage from "./pages/Review/ReviewFinish"
+import ReviewListPage from "./pages/Review/ReviewListPage"
+import ReviewWritePage from "./pages/Review/ReviewWritePage"
+import SignUpPage from "./pages/SignUp"
+import TermsOfDataPage from "./pages/SignUp/TermsOfData"
+import TermsOfUsePage from "./pages/SignUp/TermsOfUse"
+import PrivateRouter from "./PrivateRouter"
+import KeywordPage from "./pages/Keyword"
+import ResultPage from "./pages/Keyword/Result"
 
 const AppRouter = () => {
-  const userLogin = useRecoilValue(userLoginState);
-
   return (
     <BrowserRouter>
       <Routes>
@@ -71,7 +66,7 @@ const AppRouter = () => {
         <Route path="/create" element={<CreatePage />} />
       </Routes>
     </BrowserRouter>
-  );
-};
+  )
+}
 
-export default AppRouter;
+export default AppRouter

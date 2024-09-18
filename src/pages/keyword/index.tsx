@@ -1,52 +1,52 @@
-import { useToast } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+import { useToast } from "@chakra-ui/react"
+import { useNavigate } from "react-router-dom"
 
-import Bubble from "./components/Bubble";
-import * as S from "./Keyword.style";
-import AppBar from "../../components/app-bar/AppBar";
-import GNB from "../../components/gnb/GNB";
-import KeywordButton from "../../components/keyword-button/KeywordButton";
-import WideButton from "../../components/wide-button/WideButton";
-import keywordData from "../../data/keyword-id.json";
+import * as S from "./Keyword.style"
+import AppBar from "../../components/app-bar/AppBar"
+import GNB from "../../components/gnb/GNB"
+import KeywordButton from "../../components/keyword-button/KeywordButton"
+import WideButton from "../../components/wide-button/WideButton"
+import keywordData from "../../data/keyword-id.json"
+import Bubble from "./components/Bubble"
 
 const KeywordPage = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   // keyword data
-  const displayID = [2, 4, 5, 10, 12, 13, 14, 15];
+  const displayID = [2, 4, 5, 10, 12, 13, 14, 15]
   const outputData = Object.entries(keywordData)
     .map(([id, name]) => ({
       id: parseInt(id),
       name,
     }))
-    .filter((elem) => displayID.includes(elem.id));
+    .filter((elem) => displayID.includes(elem.id))
 
   // clicked keyword
-  let clickedList: number[] = [];
+  let clickedList: number[] = []
   const clickButton = (id: number) => {
     if (clickedList.includes(id)) {
-      clickedList = clickedList.filter((elem) => elem !== id);
+      clickedList = clickedList.filter((elem) => elem !== id)
     } else {
-      clickedList.push(id);
+      clickedList.push(id)
     }
-  };
+  }
 
   // click next
-  const toast = useToast();
+  const toast = useToast()
   const clickNext = () => {
     if (clickedList.length > 0) {
       navigate("/result", {
         state: clickedList,
-      });
+      })
     } else {
       toast({
         title: "키워드를 1개 이상 선택해주세요!",
         status: "error",
         duration: 2000,
         isClosable: true,
-      });
+      })
     }
-  };
+  }
 
   return (
     <S.MainWrapper>
@@ -61,7 +61,7 @@ const KeywordPage = () => {
               onClick={() => clickButton(elem.id)}
               animation={true}
             />
-          );
+          )
         })}
       </S.KeywordWrapper>
       <div className="fixed-bottom">
@@ -73,7 +73,7 @@ const KeywordPage = () => {
       </div>
       <GNB page="search" />
     </S.MainWrapper>
-  );
-};
+  )
+}
 
-export default KeywordPage;
+export default KeywordPage
