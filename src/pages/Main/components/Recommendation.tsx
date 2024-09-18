@@ -18,6 +18,7 @@ const Recommendation = () => {
   const [recommendationData, setRecommendationData] =
     useRecoilState(recommendationState)
   const [data, setData] = useState<MountainData | null>()
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const docRef = collection(dbService, "recommendationData")
@@ -39,6 +40,7 @@ const Recommendation = () => {
         })
 
         setRecommendationData(data)
+        setIsLoading(false)
       })
       .catch((error) => {
         console.error("Error getting documents: ", error)
@@ -46,15 +48,11 @@ const Recommendation = () => {
   }, [setRecommendationData])
 
   useEffect(() => {
-    if (recommendationData.length > 0) {
-      mountainData.forEach((item) => {
-        if (item.name === recommendationData[0].ranking[0]) {
-          setData(item)
-        }
-      })
-    } else {
-      setData(null)
-    }
+    mountainData.forEach((item) => {
+      if (item.name === recommendationData[0]?.ranking[0]) {
+        setData(item)
+      }
+    })
   }, [recommendationData, mountainData])
 
   const moveToDetail = () => {
@@ -69,22 +67,7 @@ const Recommendation = () => {
         <S.TagWrapper>
           <p className="text">이번 달 추천</p>
         </S.TagWrapper>
-        {recommendationData ? (
-          data ? (
-            <>
-              <S.TextWrapper onClick={moveToDetail}>
-                <p className="title">{recommendationData[0].ranking[0]}</p>
-                <p className="desc"># {recommendationData[0].desc}</p>
-              </S.TextWrapper>
-            </>
-          ) : (
-            <>
-              <S.TextWrapper onClick={moveToDetail}>
-                <p className="title">이번 달 추천 데이터가 없어요.</p>
-              </S.TextWrapper>
-            </>
-          )
-        ) : (
+        {isLoading ? (
           <>
             <Skeleton>
               <S.SkeletonWrapper>dfddfddfddfd</S.SkeletonWrapper>
@@ -92,6 +75,19 @@ const Recommendation = () => {
             <Skeleton>
               <S.SkeletonWrapper>dfddfddfddfd</S.SkeletonWrapper>
             </Skeleton>
+          </>
+        ) : recommendationData?.length > 0 ? (
+          <>
+            <S.TextWrapper onClick={moveToDetail}>
+              <p className="title">{recommendationData[0].ranking[0]}</p>
+              <p className="desc"># {recommendationData[0].desc}</p>
+            </S.TextWrapper>
+          </>
+        ) : (
+          <>
+            <S.TextWrapper onClick={moveToDetail}>
+              <p className="title">이번 달 추천 데이터가 없어요.</p>
+            </S.TextWrapper>
           </>
         )}
         <S.MoreWrapper onClick={() => navigate("/list/recommendation")}>
